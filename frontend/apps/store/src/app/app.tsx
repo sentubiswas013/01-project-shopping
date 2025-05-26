@@ -8,11 +8,11 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 
 import Home from './features/home/home';
-import Shop from './features/shop/shop';
-import ShopDetails from './features/shopDetails/shopDetails';
-import Checkout from './features/checkout/checkout';
-import ShoppingCart from './features/shoppingCart/shoppingCart';
-import Contact from './features/contact/contact';
+import Shop from './features/shop/Shop';
+import ShopDetails from './features/shopDetails/ShopDetails';
+import Checkout from './features/checkout/Checkout';
+import ShoppingCart from './features/shoppingCart/ShoppingCart';
+import Contact from './features/contact/Contact';
 import Navbar from './shared/common/Navbar';
 
 export function App() {

@@ -89,8 +89,8 @@ export function Navbar({ title }: { title: string }) {
                             <Link className="nav-link active" to="/">Home</Link> 
                             <Link className="nav-link" to="/Shop">Shop</Link>                            
                             <Link className="nav-link" to="/ShopDetails">ShopDetails</Link>                            
-                            <Link className="nav-link" to="/Checkout">ShopDetails</Link>                            
-                            <Link className="nav-link" to="/ShoppingCart">ShopDetails</Link>                            
+                            <Link className="nav-link" to="/Checkout">Checkout</Link>                            
+                            <Link className="nav-link" to="/ShoppingCart">ShoppingCart</Link>                            
                             <Link className="nav-link" to="/Contact">Contact</Link>
                         </div>
                         <div className="navbar-nav ml-auto py-0 d-none d-lg-block">
@@ -103,31 +103,6 @@ export function Navbar({ title }: { title: string }) {
                                 <span className="badge text-secondary border border-secondary rounded-circle" style={{ paddingBottom: '2px' }}>0</span>
                             </a>
                         </div>
-
-                        {/* <div className="navbar-nav mr-auto py-0">
-                            <a href="index.html" className="nav-item nav-link active">Home</a>
-                            <a href="shop.html" className="nav-item nav-link">Shop</a>
-                            <a href="detail.html" className="nav-item nav-link">Shop Detail</a>
-                            <div className="nav-item dropdown">
-                                <a href="#" className="nav-link dropdown-toggle" data-toggle="dropdown">Pages <i className="fa fa-angle-down mt-1"></i></a>
-                                <div className="dropdown-menu bg-primary rounded-0 border-0 m-0">
-                                    <a href="cart.html" className="dropdown-item">Shopping Cart</a>
-                                    <a href="checkout.html" className="dropdown-item">Checkout</a>
-                                </div>
-                            </div>
-                            <a href="contact.html" className="nav-item nav-link">Contact</a>
-                        </div>
-                        <div className="navbar-nav ml-auto py-0 d-none d-lg-block">
-                        <a href="#" className="btn px-0">
-                            <FontAwesomeIcon icon={faHeart} className="text-primary" />
-                            <span className="badge text-secondary border border-secondary rounded-circle" style={{ paddingBottom: '2px' }}>0</span>
-                        </a>
-                        <a href="#" className="btn px-0 ml-3">
-                            <FontAwesomeIcon icon={faShoppingCart} className="text-primary" />
-                            <span className="badge text-secondary border border-secondary rounded-circle" style={{ paddingBottom: '2px' }}>0</span>
-                        </a>
-                        </div> */}
-
                     </div>
                 </nav>
             </div>

@@ -6,7 +6,7 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  */
 import React, { useState } from 'react';
-import VendorCarousel from '../../VendorCarousel';
+import VendorCarousel from '../../shared/components/VendorCarousel';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 import Topbar from '../../shared/common/Topbar';

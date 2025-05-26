@@ -11,7 +11,7 @@ import Topbar from '../../shared/common/Topbar';
 import Navbar from '../../shared/common/Navbar';
 import Breadcrumb from '../../shared/common/Breadcrumb';
 import BillingAddress from './BillingAddress';
-import OrderTotal from './orderTotal';
+import OrderTotal from './OrderTotal';
 import Footer from '../../shared/common/Footer';
  
 export function Checkout({ title }: { title: string }) {

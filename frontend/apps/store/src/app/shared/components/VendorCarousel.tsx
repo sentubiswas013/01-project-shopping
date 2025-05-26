@@ -7,14 +7,14 @@ import 'swiper/css/free-mode';
 
 import { Autoplay, FreeMode } from 'swiper/modules';
 
-import vendor1 from '../assets/img/vendor-1.jpg';
-import vendor2 from '../assets/img/vendor-2.jpg';
-import vendor3 from '../assets/img/vendor-3.jpg';
-import vendor4 from '../assets/img/vendor-4.jpg';
-import vendor5 from '../assets/img/vendor-5.jpg';
-import vendor6 from '../assets/img/vendor-6.jpg';
-import vendor7 from '../assets/img/vendor-7.jpg';
-import vendor8 from '../assets/img/vendor-8.jpg';
+import vendor1 from '../../../assets/img/vendor-1.jpg';
+import vendor2 from '../../../assets/img/vendor-2.jpg';
+import vendor3 from '../../../assets/img/vendor-3.jpg';
+import vendor4 from '../../../assets/img/vendor-4.jpg';
+import vendor5 from '../../../assets/img/vendor-5.jpg';
+import vendor6 from '../../../assets/img/vendor-6.jpg';
+import vendor7 from '../../../assets/img/vendor-7.jpg';
+import vendor8 from '../../../assets/img/vendor-8.jpg';
 
 // Use the actual image imports
 const vendorImages = [

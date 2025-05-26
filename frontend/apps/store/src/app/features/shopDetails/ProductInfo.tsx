@@ -7,26 +7,7 @@
  */
 import React, { useState } from 'react';
 
- import offer1 from '../../../assets//img/offer-1.jpg';
- import offer2 from '../../../assets//img/offer-2.jpg';
- 
- import cat1 from '../../../assets//img/cat-1.jpg';
- import cat2 from '../../../assets//img/cat-2.jpg';
- import cat3 from '../../../assets//img/cat-3.jpg';
- import cat4 from '../../../assets//img/cat-4.jpg';
- 
- import product1 from '../../../assets//img/product-1.jpg';
- import product2 from '../../../assets//img/product-2.jpg';
- import product3 from '../../../assets//img/product-3.jpg';
- import product4 from '../../../assets//img/product-4.jpg';
- import product5 from '../../../assets//img/product-5.jpg';
- import product6 from '../../../assets//img/product-6.jpg';
- import product7 from '../../../assets//img/product-7.jpg';
- import product8 from '../../../assets//img/product-8.jpg';
- 
- import payments from '../../../assets//img/payments.png';
-
- import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 
