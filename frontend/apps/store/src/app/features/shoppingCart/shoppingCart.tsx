@@ -12,6 +12,7 @@ import Navbar from '../../shared/common/Navbar';
 import Breadcrumb from '../../shared/common/Breadcrumb';
 import CartItems from './CartItems';
 import CartSummary from './CartSummary';
+import ProductCarousel from '../../shared/components/ProductCarousel';
 import Footer from '../../shared/common/Footer';
 
 export function ShoppingCart({ title }: { title: string }) {
@@ -45,6 +46,17 @@ export function ShoppingCart({ title }: { title: string }) {
         </div>
     </div>
     {/*-- Cart End --*/}
+
+    {/*-- Product Carousel Start --*/}
+    <div className="container-fluid py-5">
+        <h2 className="section-title position-relative text-uppercase mx-xl-5 mb-4"><span className="bg-secondary pr-3">You May Also Like</span></h2>
+        <div className="row px-xl-5">
+            <div className="col">
+                <ProductCarousel />
+            </div>
+        </div>
+    </div>
+    {/*-- Product Carousel End --*/}
 
     {/*-- Footer Start --*/}
     <Footer title="Footer"/>

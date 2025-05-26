@@ -20,33 +20,6 @@ import Footer from '../../shared/common/Footer';
 
 export function ShopDetails({ title }: { title: string }) {
 
-  // Section: for account
-  const [isOpenAccount, setIsOpenAccount] = useState(false);            
-  const toggleCollapseAccount = () => setIsOpenAccount(!isOpenAccount);
-
-  // Section: for currency
-  const [isOpenCurrency, setIsOpenCurrency] = useState(false);            
-  const toggleCollapseCurrency = () => setIsOpenCurrency(!isOpenCurrency);
-
-  // Section: for language
-  const [isOpenLanguage, setIsOpenLanguage] = useState(false);            
-  const toggleCollapseLanguage = () => setIsOpenLanguage(!isOpenLanguage);
-
-  // Section: for category menu
-  const [isOpenMenu, setIsOpenMenu] = useState(false);               // Controls category collapse
-  const [isDropdownOpenMenu, setDropdownOpenMenu] = useState(false); // Controls dresses sub-menu
-
-  const toggleCollapseMenu = () => setIsOpenMenu(!isOpenMenu);
-  const toggleDropdownMenu = () => setDropdownOpenMenu(!isDropdownOpenMenu);
-
-  // Section: for sorting
-  const [isOpenSort, setIsOpenSort] = useState(false);            
-  const toggleCollapseSort = () => setIsOpenSort(!isOpenSort);
-
-  // Section: for showing
-  const [isOpenLimit, setIsOpenLimit] = useState(false);          
-  const toggleCollapseLimit = () => setIsOpenLimit(!isOpenLimit);
-
   return (
     <>
     {/*-- Topbar Start --*/}

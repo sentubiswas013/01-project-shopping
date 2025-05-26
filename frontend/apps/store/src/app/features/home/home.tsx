@@ -63,7 +63,7 @@ export function Home({ title }: { title: string }) {
 
 
     {/*-- Vendor Start --*/}
-    <div className="container-fluid py-5">
+    <div className="container-fluid py-0">
         <div className="row px-xl-5">
             <div className="col">
                 <VendorCarousel />

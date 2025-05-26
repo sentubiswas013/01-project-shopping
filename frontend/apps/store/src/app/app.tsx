@@ -7,7 +7,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 
-import Home from './features/home/home';
+import Home from './features/home/Home';
 import Shop from './features/shop/Shop';
 import ShopDetails from './features/shopDetails/ShopDetails';
 import Checkout from './features/checkout/Checkout';
