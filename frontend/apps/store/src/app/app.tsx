@@ -9,7 +9,7 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 
 import Home from './features/home/Home';
 import Shop from './features/shop/Shop';
-import ShopDetails from './features/shopDetails/ShopDetails';
+import ProductDetails from './features/productDetails/ProductDetails';
 import Checkout from './features/checkout/Checkout';
 import ShoppingCart from './features/shoppingCart/ShoppingCart';
 import Contact from './features/contact/Contact';
@@ -23,7 +23,7 @@ export function App() {
         <Routes>
           <Route path="/" element={<Home title="home" />} />
           <Route path="/Shop" element={<Shop title="Shop" />} />
-          <Route path="/ShopDetails" element={<ShopDetails title="ShopDetails" />} />
+          <Route path="/ProductDetails" element={<ProductDetails title="ProductDetails" />} />
           <Route path="/Checkout" element={<Checkout title="Checkout" />} />
           <Route path="/ShoppingCart" element={<ShoppingCart title="ShoppingCart" />} />
           <Route path="/Contact" element={<Contact title="Contact" />} />

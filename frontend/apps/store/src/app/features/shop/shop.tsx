@@ -50,7 +50,7 @@ export function Shop({ title }: { title: string }) {
     {/*-- Shop End --*/}
 
     {/*-- Vendor Start --*/}
-    <div className="container-fluid py-5">
+    <div className="container-fluid">
         <div className="row px-xl-5">
             <div className="col">
                 <VendorCarousel />

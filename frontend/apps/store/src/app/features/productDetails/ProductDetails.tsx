@@ -18,7 +18,7 @@ import ProductInfo from './ProductInfo';
 import Footer from '../../shared/common/Footer';
  
 
-export function ShopDetails({ title }: { title: string }) {
+export function ProductDetails({ title }: { title: string }) {
 
   return (
     <>
@@ -78,4 +78,4 @@ export function ShopDetails({ title }: { title: string }) {
   );
 }
 
-export default ShopDetails;
+export default ProductDetails;
