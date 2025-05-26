@@ -1,0 +1,44 @@
+/*
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ This is a starter component and can be deleted.
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ Delete this file and get started with your project!
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ */
+import React, { useState } from 'react';
+ import payments from '../assets/img/payments.png';
+ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart, faHeart, faSearch, faMapMarkerAlt, faEnvelope, faPhoneAlt, faAngleDown, faAngleRight, faBars } from '@fortawesome/free-solid-svg-icons';
+ 
+export function ContactRight({ title }: { title: string }) {
+
+  return (
+    <>
+
+    {/*-- Contact Start --*/}
+    <div className="bg-light p-30 mb-30">
+        <iframe style={{width: '100%', height: '250px'}}
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3001156.4288297426!2d-78.01371936852176!3d42.72876761954724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccc4bf0f123a5a9%3A0xddcfc6c1de189567!2sNew%20York%2C%20USA!5e0!3m2!1sen!2sbd!4v1603794290143!5m2!1sen!2sbd"
+        frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    </div>
+    <div className="bg-light p-30 mb-3">
+        <p className="mb-2">
+            <FontAwesomeIcon icon={faMapMarkerAlt} className="text-primary mr-3" />
+            123 Street, New York, USA
+        </p>
+        <p className="mb-2">
+            <FontAwesomeIcon icon={faEnvelope} className="text-primary mr-3" />
+            info@example.com
+        </p>
+        <p className="mb-2">
+            <FontAwesomeIcon icon={faPhoneAlt} className="text-primary mr-3" />
+            +012 345 67890
+        </p>
+    </div>
+    {/*-- Contact End --*/}
+
+    </>
+  );
+}
+
+export default ContactRight;

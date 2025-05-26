@@ -1,0 +1,56 @@
+/*
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ This is a starter component and can be deleted.
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ Delete this file and get started with your project!
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ */
+import React, { useState } from 'react';
+
+import Topbar from '../../shared/common/Topbar';
+import Navbar from '../../shared/common/Navbar';
+import Breadcrumb from '../../shared/common/Breadcrumb';
+import BillingAddress from './BillingAddress';
+import OrderTotal from './orderTotal';
+import Footer from '../../shared/common/Footer';
+ 
+export function Checkout({ title }: { title: string }) {
+
+  return (
+    <>
+    {/*-- Topbar Start --*/}
+    <Topbar title="topbar"/>
+    {/*-- Topbar End --*/}
+
+
+    {/*-- Navbar Start --*/}
+    <Navbar title="Navbar"/>
+    {/*-- Navbar End --*/}
+
+    {/*-- Breadcrumb Start --*/}
+    <Breadcrumb title="Breadcrumb" />
+    {/*-- Breadcrumb End --*/}
+
+
+    {/*-- Checkout Start --*/}
+    <div className="container-fluid">
+        <div className="row px-xl-5">
+            <div className="col-lg-8">
+                <BillingAddress title="BillingAddress" />
+            </div>
+            <div className="col-lg-4">
+                <OrderTotal title="OrderTotal" />
+            </div>
+        </div>
+    </div>
+    {/*-- Checkout End --*/}
+
+    {/*-- Footer Start --*/}
+    <Footer title="Footer" />
+    {/*-- Footer End --*/}
+
+    </>
+  );
+}
+
+export default Checkout;
