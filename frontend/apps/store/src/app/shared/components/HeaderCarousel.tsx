@@ -8,11 +8,11 @@ import 'swiper/css/pagination';
 // import required modules
 import { Mousewheel, Pagination } from 'swiper/modules';
 
-import carousel1 from '../assets/img/carousel-1.jpg';
-import carousel2 from '../assets/img/carousel-2.jpg';
-import carousel3 from '../assets/img/carousel-3.jpg';
-import offer1 from '../assets/img/offer-1.jpg';
-import offer2 from '../assets/img/offer-2.jpg';
+import carousel1 from '../../../assets/img/carousel-1.jpg';
+import carousel2 from '../../../assets/img/carousel-2.jpg';
+import carousel3 from '../../../assets/img/carousel-3.jpg';
+import offer1 from '../../../assets/img/offer-1.jpg';
+import offer2 from '../../../assets/img/offer-2.jpg';
 
 const slides = [
   {

@@ -6,10 +6,8 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  */
 import React, { useState } from 'react';
- import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapMarkerAlt, faEnvelope, faPhoneAlt, } from '@fortawesome/free-solid-svg-icons';
- 
-export function ContactLeft({ title }: { title: string }) {
+
+export function ContactLeft() {
 
   return (
     <>

@@ -6,16 +6,12 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  */
 import React, { useState } from 'react';
- import payments from '../assets/img/payments.png';
- import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart, faHeart, faSearch, faMapMarkerAlt, faEnvelope, faPhoneAlt, faAngleDown, faAngleRight, faBars } from '@fortawesome/free-solid-svg-icons';
- 
 
 import Topbar from '../../shared/common/Topbar';
 import Navbar from '../../shared/common/Navbar';
 import Breadcrumb from '../../shared/common/Breadcrumb';
-import ContactLeft from './contactLeft';
-import ContactRight from './contactRight';
+import ContactLeft from './ContactLeft';
+import ContactRight from './ContactRight';
 import Footer from '../../shared/common/Footer';
 
 export function Contact({ title }: { title: string }) {
@@ -41,10 +37,10 @@ export function Contact({ title }: { title: string }) {
         <h2 className="section-title position-relative text-uppercase mx-xl-5 mb-4"><span className="bg-secondary pr-3">Contact Us</span></h2>
         <div className="row px-xl-5">
             <div className="col-lg-7 mb-5">
-                <ContactLeft title="ContactRigContactLeftht"/>
+                <ContactLeft />
             </div>
             <div className="col-lg-5 mb-5">
-                <ContactRight title="ContactRight"/>
+                <ContactRight/>
             </div>
         </div>
     </div>
