@@ -46,15 +46,7 @@ export function Product({ name, price, oldPrice, rating, image, reviews, sale, s
           <a className="btn btn-outline-dark btn-square" href=""><FontAwesomeIcon icon={faSyncAlt} /></a>
           <a className="btn btn-outline-dark btn-square" href=""><FontAwesomeIcon icon={faSearch} /></a>
         </div>
-
-        {/* <div className="product-add-to-cart">
-          <a className="btn btn-outline-dark " href="#">Add To Cart</a>
-          <a className="btn btn-outline-dark " href="#">Buy</a>
-        </div> */}
-
       </div>
-
-      
 
       <div className="text-center py-4 position-relative">
         <div className="product-add-to-cart">
