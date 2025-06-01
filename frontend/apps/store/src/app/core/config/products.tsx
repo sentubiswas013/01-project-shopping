@@ -17,6 +17,9 @@ const products = [
     rating: 5,
     image: product1,
     reviews: 99,
+    sale: '',
+    status: '',
+    stock: 'Out of Stock',
   },
   {
     id: 2,
@@ -25,7 +28,10 @@ const products = [
     oldPrice: 110,
     rating: 4,
     image: product2,
-    reviews: 76,
+    reviews: 76,    
+    sale: '',
+    status: 'New',
+    stock: '',
   },
   {
     id: 3,
@@ -35,6 +41,9 @@ const products = [
     rating: 4,
     image: product3,
     reviews: 65,
+    sale: 'Sale',
+    status: '',
+    stock: '',
   },
   {
     id: 4,
@@ -44,6 +53,9 @@ const products = [
     rating: 5,
     image: product4,
     reviews: 88,
+    sale: '',
+    status: '',
+    stock: '',
   },
   {
     id: 5,
@@ -53,6 +65,9 @@ const products = [
     rating: 3,
     image: product5,
     reviews: 43,
+    sale: '',
+    status: '',
+    stock: 'Out of Stock',
   },
   {
     id: 6,
@@ -62,6 +77,9 @@ const products = [
     rating: 4,
     image: product6,
     reviews: 112,
+    sale: '',
+    status: 'New',
+    stock: '',
   },
   {
     id: 7,
@@ -71,6 +89,9 @@ const products = [
     rating: 4,
     image: product7,
     reviews: 34,
+    sale: '',
+    status: '',
+    stock: '',
   },
   {
     id: 8,
@@ -80,6 +101,9 @@ const products = [
     rating: 4,
     image: product8,
     reviews: 77,
+    sale: 'Sale',
+    status: '',
+    stock: '',
   },
 ];
 

@@ -9670,6 +9670,35 @@ a.text-dark:hover, a.text-dark:focus {
   transition: .3s .15s;
 }
 
+.product-add-to-cart {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: -70px;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: .5s;
+  opacity: 0;
+}
+.product-item:hover .product-add-to-cart {
+  opacity: 1;
+  margin-top: 0;
+  transition: .3s 0s;
+}
+.product-item:hover .product-add-to-cart a.btn:first-child {
+  color: #fff;
+  border: 1px solid #ff9f00;
+  background: #ff9f00;
+}
+
+.product-item:hover .product-add-to-cart a.btn:nth-child(2) {
+  color: #fff;
+  border: 1px solid #fb641b;
+  background: #fb641b;
+}
+
 .product-item .product-img img {
   transition: .5s;
 }
@@ -9681,6 +9710,70 @@ a.text-dark:hover, a.text-dark:focus {
 .product-item .btn:hover {
   color: #FFD333 !important;
 }
+
+.product_bubble{
+	position: absolute;
+	top: 15px;	
+	height: 22px;
+  line-height: 22px;
+  padding: 0 6px;
+	border-radius: 3px;
+	text-transform: uppercase;
+}
+.product_bubble span{
+	font-size: 12px;
+	font-weight: 600;
+	color: #FFFFFF;
+}
+.product_bubble_right::after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+	left: 6px;
+	right: auto;
+	top: auto;
+	bottom: -6px;
+	border: 6px solid;
+}
+.product_bubble_left::after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+	left: auto;
+	right: 6px;
+	bottom: -6px;
+	border: 6px solid;
+}
+.product_bubble_left{
+	left: 15px;
+}
+.product_bubble_right{
+	right: 15px;
+}
+.product_bubble_red::after{
+	border-color: transparent transparent transparent #fe4c50;
+}
+.product_bubble_green::after{
+	border-color: #51a042 #51a042 transparent transparent;
+}
+.product_bubble_blue::after{
+	border-color: #0066bd #0066bd transparent transparent;
+}
+.product_bubble_red{
+	background: #fe4c50;
+}
+.product_bubble_green{
+	background: #51a042;
+}
+.product_bubble_blue{
+	background: #0066bd;
+} 
+
+
+
+
 
 .table.table-borderless thead tr,
 .table.table-borderless tbody tr:not(:last-child) {
