@@ -7,12 +7,12 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 
-import Home from './features/home/home';
-import Shop from './features/shop/shop';
-import ShopDetails from './features/shopDetails/shopDetails';
-import Checkout from './features/checkout/checkout';
-import ShoppingCart from './features/shoppingCart/shoppingCart';
-import Contact from './features/contact/contact';
+import Home from './features/home/Home';
+import Shop from './features/shop/Shop';
+import ProductDetails from './features/productDetails/ProductDetails';
+import Checkout from './features/checkout/Checkout';
+import ShoppingCart from './features/shoppingCart/ShoppingCart';
+import Contact from './features/contact/Contact';
 import Navbar from './shared/common/Navbar';
 
 export function App() {
@@ -23,7 +23,7 @@ export function App() {
         <Routes>
           <Route path="/" element={<Home title="home" />} />
           <Route path="/Shop" element={<Shop title="Shop" />} />
-          <Route path="/ShopDetails" element={<ShopDetails title="ShopDetails" />} />
+          <Route path="/ProductDetails" element={<ProductDetails title="ProductDetails" />} />
           <Route path="/Checkout" element={<Checkout title="Checkout" />} />
           <Route path="/ShoppingCart" element={<ShoppingCart title="ShoppingCart" />} />
           <Route path="/Contact" element={<Contact title="Contact" />} />

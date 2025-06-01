@@ -5,26 +5,14 @@
  Delete this file and get started with your project!
  * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  */
-import React, { useState } from 'react'; 
-import payments from '../assets/img/payments.png';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart, faHeart, faSearch, faMapMarkerAlt, faEnvelope, faPhoneAlt, faAngleDown, faAngleRight, faMinus, faPlus, faTimes, faBars } from '@fortawesome/free-solid-svg-icons';
-
- import product1 from '../assets/img/product-1.jpg';
- import product2 from '../assets/img/product-2.jpg';
- import product3 from '../assets/img/product-3.jpg';
- import product4 from '../assets/img/product-4.jpg';
- import product5 from '../assets/img/product-5.jpg';
- import product6 from '../assets/img/product-6.jpg';
- import product7 from '../assets/img/product-7.jpg';
- import product8 from '../assets/img/product-8.jpg';
- 
+import React, { useState } from 'react';
 
 import Topbar from '../../shared/common/Topbar';
 import Navbar from '../../shared/common/Navbar';
 import Breadcrumb from '../../shared/common/Breadcrumb';
 import CartItems from './CartItems';
 import CartSummary from './CartSummary';
+import ProductCarousel from '../../shared/components/ProductCarousel';
 import Footer from '../../shared/common/Footer';
 
 export function ShoppingCart({ title }: { title: string }) {
@@ -58,6 +46,17 @@ export function ShoppingCart({ title }: { title: string }) {
         </div>
     </div>
     {/*-- Cart End --*/}
+
+    {/*-- Product Carousel Start --*/}
+    <div className="container-fluid py-5">
+        <h2 className="section-title position-relative text-uppercase mx-xl-5 mb-4"><span className="bg-secondary pr-3">You May Also Like</span></h2>
+        <div className="row px-xl-5">
+            <div className="col">
+                <ProductCarousel />
+            </div>
+        </div>
+    </div>
+    {/*-- Product Carousel End --*/}
 
     {/*-- Footer Start --*/}
     <Footer title="Footer"/>

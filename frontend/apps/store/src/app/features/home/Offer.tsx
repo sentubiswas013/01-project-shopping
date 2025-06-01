@@ -9,11 +9,6 @@ import React, { useState } from 'react';
 
  import offer1 from '../../../assets/img/offer-1.jpg';
  import offer2 from '../../../assets/img/offer-2.jpg';
-
- import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart, faHeart, faSyncAlt, faSearch, faCheck, faShippingFast, faExchangeAlt, faPhoneVolume, faStar, faMapMarkerAlt, faEnvelope, faPhoneAlt, faAngleDown, faAngleRight, faBars } from '@fortawesome/free-solid-svg-icons';
-
-
  
 export function Offer({ title }: { title: string }) {
   return (

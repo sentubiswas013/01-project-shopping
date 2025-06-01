@@ -6,9 +6,8 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  */
 import React, { useState } from 'react';
-import VendorCarousel from '../../VendorCarousel';
-import HeaderCarousel from '../../HeaderCarousel';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import VendorCarousel from '../../shared/components/VendorCarousel';
+import HeaderCarousel from '../../shared/components/HeaderCarousel';
 
 import Topbar from '../../shared/common/Topbar';
 import Navbar from '../../shared/common/Navbar';
@@ -34,7 +33,7 @@ export function Home({ title }: { title: string }) {
 
 
     {/*-- Carousel Start --*/}
-    <HeaderCarousel/>
+    <HeaderCarousel />
     {/*-- Carousel End --*/}
 
 
@@ -64,7 +63,7 @@ export function Home({ title }: { title: string }) {
 
 
     {/*-- Vendor Start --*/}
-    <div className="container-fluid py-5">
+    <div className="container-fluid py-0">
         <div className="row px-xl-5">
             <div className="col">
                 <VendorCarousel />
