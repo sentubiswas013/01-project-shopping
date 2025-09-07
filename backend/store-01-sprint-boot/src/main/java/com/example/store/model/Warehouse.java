@@ -1,0 +1,31 @@
+package com.example.store.model;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "warehouses")
+public class Warehouse {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long warehouseId;
+
+    @Column(length = 255)
+    private String location;
+
+    @Column
+    private Integer capacity;
+
+    public Warehouse() {}
+
+    public Warehouse(String location, Integer capacity) {
+        this.location = location;
+        this.capacity = capacity;
+    }
+
+    public Long getWarehouseId() { return warehouseId; }
+    public void setWarehouseId(Long warehouseId) { this.warehouseId = warehouseId; }
+    public String getLocation() { return location; }
+    public void setLocation(String location) { this.location = location; }
+    public Integer getCapacity() { return capacity; }
+    public void setCapacity(Integer capacity) { this.capacity = capacity; }
+}
