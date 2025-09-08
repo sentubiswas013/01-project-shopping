@@ -24,6 +24,15 @@ public class ProductQuestionController {
 
     @PostMapping
     public ProductQuestion create(@RequestBody ProductQuestion productQuestion) {
+        if (productQuestion.getProduct() == null) {
+            throw new IllegalArgumentException("Product is required for product question");
+        }
+        if (productQuestion.getUserId() == null) {
+            throw new IllegalArgumentException("User ID is required for product question");
+        }
+        if (productQuestion.getQuestion() == null || productQuestion.getQuestion().trim().isEmpty()) {
+            throw new IllegalArgumentException("Question text is required for product question");
+        }
         return productQuestionRepository.save(productQuestion);
     }
 

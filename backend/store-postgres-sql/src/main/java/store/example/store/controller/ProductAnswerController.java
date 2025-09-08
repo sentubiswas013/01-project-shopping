@@ -24,6 +24,15 @@ public class ProductAnswerController {
 
     @PostMapping
     public ProductAnswer create(@RequestBody ProductAnswer productAnswer) {
+        if (productAnswer.getQuestion() == null) {
+            throw new IllegalArgumentException("Question is required for product answer");
+        }
+        if (productAnswer.getUserId() == null) {
+            throw new IllegalArgumentException("User ID is required for product answer");
+        }
+        if (productAnswer.getAnswer() == null || productAnswer.getAnswer().trim().isEmpty()) {
+            throw new IllegalArgumentException("Answer text is required for product answer");
+        }
         return productAnswerRepository.save(productAnswer);
     }
 

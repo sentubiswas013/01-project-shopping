@@ -24,6 +24,18 @@ public class SellerProductController {
 
     @PostMapping
     public SellerProduct create(@RequestBody SellerProduct sellerProduct) {
+        if (sellerProduct.getSeller() == null) {
+            throw new IllegalArgumentException("Seller is required for seller product");
+        }
+        if (sellerProduct.getProduct() == null) {
+            throw new IllegalArgumentException("Product is required for seller product");
+        }
+        if (sellerProduct.getPrice() == null) {
+            throw new IllegalArgumentException("Price is required for seller product");
+        }
+        if (sellerProduct.getStock() == null) {
+            throw new IllegalArgumentException("Stock is required for seller product");
+        }
         return sellerProductRepository.save(sellerProduct);
     }
 

@@ -24,6 +24,9 @@ public class AdCampaignController {
 
     @PostMapping
     public AdCampaign create(@RequestBody AdCampaign adCampaign) {
+        if (adCampaign.getSeller() == null) {
+            throw new IllegalArgumentException("Seller is required for ad campaign");
+        }
         return adCampaignRepository.save(adCampaign);
     }
 

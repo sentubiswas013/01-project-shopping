@@ -24,6 +24,9 @@ public class ProductAttributeController {
 
     @PostMapping
     public ProductAttribute create(@RequestBody ProductAttribute productAttribute) {
+        if (productAttribute.getProduct() == null) {
+            throw new IllegalArgumentException("Product is required for product attribute");
+        }
         return productAttributeRepository.save(productAttribute);
     }
 

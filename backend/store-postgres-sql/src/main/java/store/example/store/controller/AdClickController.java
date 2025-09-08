@@ -24,6 +24,15 @@ public class AdClickController {
 
     @PostMapping
     public AdClick create(@RequestBody AdClick adClick) {
+        if (adClick.getCampaign() == null) {
+            throw new IllegalArgumentException("Campaign is required for ad click");
+        }
+        if (adClick.getProduct() == null) {
+            throw new IllegalArgumentException("Product is required for ad click");
+        }
+        if (adClick.getUserId() == null) {
+            throw new IllegalArgumentException("User ID is required for ad click");
+        }
         return adClickRepository.save(adClick);
     }
 

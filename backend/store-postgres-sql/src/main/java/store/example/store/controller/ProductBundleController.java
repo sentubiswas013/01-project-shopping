@@ -24,6 +24,12 @@ public class ProductBundleController {
 
     @PostMapping
     public ProductBundle create(@RequestBody ProductBundle productBundle) {
+        if (productBundle.getMainProduct() == null) {
+            throw new IllegalArgumentException("Main product is required for product bundle");
+        }
+        if (productBundle.getRelatedProduct() == null) {
+            throw new IllegalArgumentException("Related product is required for product bundle");
+        }
         return productBundleRepository.save(productBundle);
     }
 

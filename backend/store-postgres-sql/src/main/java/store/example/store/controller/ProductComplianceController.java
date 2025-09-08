@@ -24,6 +24,9 @@ public class ProductComplianceController {
 
     @PostMapping
     public ProductCompliance create(@RequestBody ProductCompliance productCompliance) {
+        if (productCompliance.getProduct() == null) {
+            throw new IllegalArgumentException("Product is required for product compliance");
+        }
         return productComplianceRepository.save(productCompliance);
     }
 
