@@ -1,6 +1,7 @@
-package com.example.store.model;
+package com.example.main.model;
 
-import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -25,15 +26,13 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name = "category_id")
+    @JsonIgnoreProperties("products")
     private Category category;
 
     @ManyToOne
     @JoinColumn(name = "seller_id")
+    @JsonIgnoreProperties("products")
     private Seller seller;
-
-    @ManyToOne
-    @JoinColumn(name = "brand_id")
-    private Brand brand;
 
     @Column(nullable = false)
     private LocalDateTime createdAt;
@@ -44,14 +43,13 @@ public class Product {
     public Product() {
     }
 
-    public Product(String name, String description, BigDecimal price, Integer stockQuantity, Category category, Seller seller, Brand brand) {
+    public Product(String name, String description, BigDecimal price, Integer stockQuantity, Category category, Seller seller) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.stockQuantity = stockQuantity;
         this.category = category;
         this.seller = seller;
-        this.brand = brand;
     }
 
     public Integer getProductId() {
@@ -108,14 +106,6 @@ public class Product {
 
     public void setSeller(Seller seller) {
         this.seller = seller;
-    }
-
-    public Brand getBrand() {
-        return brand;
-    }
-
-    public void setBrand(Brand brand) {
-        this.brand = brand;
     }
 
     public LocalDateTime getCreatedAt() {

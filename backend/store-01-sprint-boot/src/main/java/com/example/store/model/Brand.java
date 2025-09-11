@@ -6,22 +6,19 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "sellers")
-public class Seller {
+@Table(name = "brand")
+public class Brand {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer sellerId;
-
-    @Column(nullable = false)
-    private String name;
+    private Integer brandId;
 
     @Column(nullable = false, unique = true)
-    private String email;
+    private String name;
 
     @Column
-    private String phone;
+    private String description;
 
-    @OneToMany(mappedBy = "seller", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "brand", cascade = CascadeType.ALL)
     private Set<Product> products = new HashSet<>();
 
     @Column(nullable = false)
@@ -30,22 +27,28 @@ public class Seller {
     @Column(nullable = false)
     private LocalDateTime updatedAt;
 
-    public Seller() {
+    public Brand() {
     }
 
-    public Seller(String name, String email, String phone) {
+    public Brand(String name, String description) {
         this.name = name;
-        this.email = email;
-        this.phone = phone;
+        this.description = description;
         this.products = new HashSet<>();
     }
 
-    public Integer getSellerId() {
-        return sellerId;
+    public Brand(Integer brandId, String name, String description, Set<Product> products) {
+        this.brandId = brandId;
+        this.name = name;
+        this.description = description;
+        this.products = products;
     }
 
-    public void setSellerId(Integer sellerId) {
-        this.sellerId = sellerId;
+    public Integer getBrandId() {
+        return brandId;
+    }
+
+    public void setBrandId(Integer brandId) {
+        this.brandId = brandId;
     }
 
     public String getName() {
@@ -56,20 +59,12 @@ public class Seller {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
+    public String getDescription() {
+        return description;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Set<Product> getProducts() {
