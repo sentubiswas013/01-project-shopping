@@ -8,13 +8,12 @@ import java.util.Set;
 
 @Entity
 @Table(name = "Images") 
-public class Images {       
+public class Images {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer imageId;
     
-    @Column(name = "product_id")
-    private Integer productId;
+    // Product relationship will be mapped below
     
     @Column(name = "image_url")
     private String imageUrl;
@@ -22,17 +21,16 @@ public class Images {
     @Column(name = "is_main")
     private Boolean isMain;
 
-    @ManyToOne
-    @JoinColumn(name = "product_id", insertable = false, updatable = false)
-    private Product product;
+    @OneToMany(mappedBy = "images", cascade = CascadeType.ALL)
+    private Set<Product> products = new HashSet<>();
 
     public Images() {
     }
 
-    public Images(Integer productId, String imageUrl, Boolean isMain) {
-        this.productId = productId;
+    public Images(String imageUrl, Boolean isMain) {
         this.imageUrl = imageUrl;
         this.isMain = isMain;
+        this.products = new HashSet<>();
     }
 
     public Integer getImageId() {
@@ -41,14 +39,6 @@ public class Images {
 
     public void setImageId(Integer imageId) {
         this.imageId = imageId;
-    }
-
-    public Integer getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Integer productId) {
-        this.productId = productId;
     }
 
     public String getImageUrl() {
@@ -67,12 +57,12 @@ public class Images {
         this.isMain = isMain;
     }
 
-    public Product getProduct() {
-        return product;
+    public Set<Product> getProducts() {
+        return products;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setProducts(Set<Product> products) {
+        this.products = products;
     }
     
 }

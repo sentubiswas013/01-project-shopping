@@ -1,5 +1,20 @@
 Designing a database for an Amazon-like e-commerce platform requires a schema that can handle a wide range of data including users, products, categories, orders, reviews, shipping, and more. Here's a high-level **relational database design** for an **Amazon-like product system**.
 
+## Select query for all the tables
+SELECT * FROM brands;
+SELECT * FROM categories;
+SELECT * FROM Images;
+SELECT * FROM Inventory;
+SELECT * FROM Orders;
+SELECT * FROM Payments;
+SELECT * FROM products;
+SELECT * FROM Reviews;
+SELECT * FROM sellers;
+SELECT * FROM Shipping;
+SELECT * FROM Specifications;
+SELECT * FROM Users;
+SELECT * FROM Variants;
+
 ---
 
 ## 🔧 Core Requirements

@@ -30,12 +30,6 @@ public class Category {
     public Category() {
     }
 
-    public Category(String name, String description) {
-        this.name = name;
-        this.description = description;
-        this.products = new HashSet<>();
-    }
-
     public Category(Integer categoryId, String name, String description, Set<Product> products) {
         this.categoryId = categoryId;
         this.name = name;
