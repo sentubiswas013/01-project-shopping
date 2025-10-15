@@ -1,0 +1,33 @@
+.btn{
+    border-radius: 0;
+}
+.bg-primary{
+    background: #FFD333 !important;
+}
+.bg-secondary {
+    background-color: #F5F5F5 !important;
+}
+.text-primary {
+    color: #FFD333 !important;
+}
+.text-secondary {
+    color: #F5F5F5 !important;
+}
+.form-control {
+  
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0;
+}
+.btn-primary {
+    color: #212529;
+    background-color: #FFD333;
+    border-color: #FFD333;
+}
+.btn-primary:hover{
+    color: #212529;
+    background-color: #efc11e;
+    border-color: #efc11e;
+}

@@ -8,7 +8,7 @@ import java.time.LocalDate;
 public class Shipping {
     
     @Id
-    @Column(name = "shipping_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer shippingId;
     
     @Column(name = "order_id")

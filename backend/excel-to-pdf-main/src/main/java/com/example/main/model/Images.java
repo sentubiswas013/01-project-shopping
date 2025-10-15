@@ -12,14 +12,12 @@ public class Images {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer imageId;
-    
-    // Product relationship will be mapped below
+
+    @Column(nullable = false)
+    private String name;
     
     @Column(name = "image_url")
     private String imageUrl;
-    
-    @Column(name = "is_main")
-    private Boolean isMain;
 
     @OneToMany(mappedBy = "images", cascade = CascadeType.ALL)
     private Set<Product> products = new HashSet<>();
@@ -27,18 +25,22 @@ public class Images {
     public Images() {
     }
 
-    public Images(String imageUrl, Boolean isMain) {
+    public Images(String name, String imageUrl) {
+        this.name = name;
         this.imageUrl = imageUrl;
-        this.isMain = isMain;
         this.products = new HashSet<>();
     }
 
-    public Integer getImageId() {
-        return imageId;
+    public Integer getImageId() { return imageId; }
+
+    public void setImageId(Integer imageId) {  this.imageId = imageId; }
+
+    public String getName() {
+        return name;
     }
 
-    public void setImageId(Integer imageId) {
-        this.imageId = imageId;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getImageUrl() {
@@ -49,20 +51,8 @@ public class Images {
         this.imageUrl = imageUrl;
     }
 
-    public Boolean getIsMain() {
-        return isMain;
-    }
+    public Set<Product> getProducts() { return products; }
 
-    public void setIsMain(Boolean isMain) {
-        this.isMain = isMain;
-    }
-
-    public Set<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(Set<Product> products) {
-        this.products = products;
-    }
+    public void setProducts(Set<Product> products) { this.products = products; }
     
 }

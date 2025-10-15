@@ -2,8 +2,11 @@ package com.example.main.controller;
 
 import com.example.main.model.Inventory;
 import com.example.main.repository.InventoryRepository;
+import com.example.main.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
 
 import java.util.List;
 
@@ -13,14 +16,23 @@ public class InventoryController {
     @Autowired
     private InventoryRepository inventoryRepository;
 
+    @Autowired
+    private ProductRepository productRepository;
+
     @GetMapping
-    public List<Inventory> getAllInventory() {
-        return inventoryRepository.findAll();
+    public ResponseEntity<List<Inventory>> getAllInventory() {
+        List<Inventory> inventories = inventoryRepository.findAll();
+        return ResponseEntity.ok(inventories);
     }
 
     @PostMapping
-    public Inventory createInventory(@RequestBody Inventory inventory) {
-        return inventoryRepository.save(inventory);
+    public ResponseEntity<?> createOrUpdateInventory(@RequestBody Inventory inventory) {
+        if (!productRepository.existsById(inventory.getProductId())) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                                 .body("Product ID " + inventory.getProductId() + " does not exist.");
+        }
+        Inventory savedInventory = inventoryRepository.save(inventory);
+        return ResponseEntity.status(HttpStatus.OK).body(savedInventory);
     }
 
     @GetMapping("/{id}")

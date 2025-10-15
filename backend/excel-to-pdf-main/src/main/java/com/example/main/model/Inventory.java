@@ -6,12 +6,13 @@ import javax.persistence.*;
 @Table(name = "Inventory") 
 public class Inventory {       
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "inventory_id")
-    private Integer inventoryId;
-    
+    private Long inventoryId;
+
     @Column(name = "product_id")
-    private Integer productId;
-    
+    private Long productId;
+
     @Column(name = "stock_quantity")
     private Integer stockQuantity;
     
@@ -22,25 +23,25 @@ public class Inventory {
     public Inventory() {
     }
     
-    public Inventory(Integer inventoryId, Integer productId, Integer stockQuantity) {
+    public Inventory(Long inventoryId, Long productId, Integer stockQuantity) {
         this.inventoryId = inventoryId;
         this.productId = productId;
         this.stockQuantity = stockQuantity;
     }
     
-    public Integer getInventoryId() {
+    public Long getInventoryId() {
         return inventoryId;
     }
     
-    public void setInventoryId(Integer inventoryId) {
+    public void setInventoryId(Long inventoryId) {
         this.inventoryId = inventoryId;
     }
     
-    public Integer getProductId() {
+    public Long getProductId() {
         return productId;
     }
     
-    public void setProductId(Integer productId) {
+    public void setProductId(Long productId) {
         this.productId = productId;
     }
     
