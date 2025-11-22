@@ -8,228 +8,190 @@ import java.util.List;
 
 @Entity
 @Table(name = "products")
-public class Product {    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer productId;
+public class Product {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long productId;
 
-    @Column(nullable = false)
-    private String name;
+	private String name;
 
-    @Column
-    private String description;
+	@Column(length = 2000)
+	private String description;
 
-    @Column(nullable = false, precision = 10, scale = 2)
-    private BigDecimal price;
+	private BigDecimal price;
 
-    @Column
-    private Integer stockQuantity;
+	private Integer stockQuantity;
 
-    @ManyToOne
-    @JoinColumn(name = "seller_id")
-    @JsonIgnoreProperties("products")
-    private Seller seller;
+	private String brand;
 
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    @JsonIgnoreProperties("products")
-    private Category category;
+	private BigDecimal oldPrice;
 
-    @ManyToOne
-    @JoinColumn(name = "image_id")
-    @JsonIgnoreProperties("products")
-    private Images images;
+	private String stock;
 
-    @Column(nullable = false)
-    private String brand;
+	private Double ratingAvg;
 
-    @Column(precision = 10, scale = 2)
-    private BigDecimal oldPrice;
+	private Integer reviews;
 
-    @Column(nullable = false)
-    private String stock;
+	private String sale;
 
-    @Column(nullable = false)
-    private Double ratingAvg;
+	private String status;
 
-    @Column(nullable = false)
-    private Integer reviews;    
+	private LocalDateTime createdAt;
 
-    @Column
-    private String sale;
+	private LocalDateTime updatedAt;
 
-    @Column(nullable = false)
-    private String status;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "seller_id")
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	private Seller seller;
 
-    @Column(nullable = false)
-    private LocalDateTime createdAt;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "category_id")
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	private Category category;
 
-    @Column(nullable = false)
-    private LocalDateTime updatedAt;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "image_id")
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	private Images images;
 
-    public Product() {
-    }
+	@PrePersist
+	protected void onCreate() {
+		createdAt = LocalDateTime.now();
+		updatedAt = createdAt;
+	}
 
-    public Product(String name, String description, BigDecimal price, Integer stockQuantity, Seller seller, Category category, Images images, String brand, BigDecimal oldPrice, String stock, Double ratingAvg, Integer reviews, String sale, String status) {
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.stockQuantity = stockQuantity;
-        this.seller = seller;
-        this.category = category;
-        this.images = images;
-        this.brand = brand;
-        this.oldPrice = oldPrice;
-        this.stock = stock;
-        this.ratingAvg = ratingAvg;
-        this.reviews = reviews;
-        this.sale = sale;
-        this.status = status;
-    }
+	@PreUpdate
+	protected void onUpdate() {
+		updatedAt = LocalDateTime.now();
+	}
 
-    public Integer getProductId() {
-        return productId;
-    }
+	public Long getProductId() {
+		return productId;
+	}
 
-    public void setProductId(Integer productId) {
-        this.productId = productId;
-    }
+	public void setProductId(Long productId) {
+		this.productId = productId;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	public String getDescription() {
+		return description;
+	}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-    public BigDecimal getPrice() {
-        return price;
-    }
+	public BigDecimal getPrice() {
+		return price;
+	}
 
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
+	public void setPrice(BigDecimal price) {
+		this.price = price;
+	}
 
-    public Integer getStockQuantity() {
-        return stockQuantity;
-    }
+	public Integer getStockQuantity() {
+		return stockQuantity;
+	}
 
-    public void setStockQuantity(Integer stockQuantity) {
-        this.stockQuantity = stockQuantity;
-    }
+	public void setStockQuantity(Integer stockQuantity) {
+		this.stockQuantity = stockQuantity;
+	}
 
-    public Seller getSeller() {
-        return seller;
-    }
+	public String getBrand() {
+		return brand;
+	}
 
-    public void setSeller(Seller seller) {
-        this.seller = seller;
-    }
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
 
-    public Category getCategory() {
-        return category;
-    }
+	public BigDecimal getOldPrice() {
+		return oldPrice;
+	}
 
-    public void setCategory(Category category) {
-        this.category = category;
-    }
+	public void setOldPrice(BigDecimal oldPrice) {
+		this.oldPrice = oldPrice;
+	}
 
-    public Images getImages() {
-        return images;
-    }
+	public String getStock() {
+		return stock;
+	}
 
-    public void setImages(Images images) {
-        this.images = images;
-    }
+	public void setStock(String stock) {
+		this.stock = stock;
+	}
 
-    public String getBrand() {
-        return brand;
-    }
+	public Double getRatingAvg() {
+		return ratingAvg;
+	}
 
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
+	public void setRatingAvg(Double ratingAvg) {
+		this.ratingAvg = ratingAvg;
+	}
 
-    public BigDecimal getOldPrice() {
-        return oldPrice;
-    }
+	public Integer getReviews() {
+		return reviews;
+	}
 
-    public void setOldPrice(BigDecimal oldPrice) {
-        this.oldPrice = oldPrice;
-    }
+	public void setReviews(Integer reviews) {
+		this.reviews = reviews;
+	}
 
-    public String getStock() {
-        return stock;
-    }
+	public String getSale() {
+		return sale;
+	}
 
-    public void setStock(String stock) {
-        this.stock = stock;
-    }
+	public void setSale(String sale) {
+		this.sale = sale;
+	}
 
-    public Double getRatingAvg() {
-        return ratingAvg;
-    }
+	public String getStatus() {
+		return status;
+	}
 
-    public void setRatingAvg(Double ratingAvg) {
-        this.ratingAvg = ratingAvg;
-    }
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
-    public Integer getReviews() {
-        return reviews;
-    }
+	public LocalDateTime getCreatedAt() {
+		return createdAt;
+	}
 
-    public void setReviews(Integer reviews) {
-        this.reviews = reviews;
-    }
+	public LocalDateTime getUpdatedAt() {
+		return updatedAt;
+	}
 
-    public String getSale() {
-        return sale;
-    }
+	public Seller getSeller() {
+		return seller;
+	}
 
-    public void setSale(String sale) {
-        this.sale = sale;
-    }
+	public void setSeller(Seller seller) {
+		this.seller = seller;
+	}
 
-    public String getStatus() {
-        return status;
-    }
+	public Category getCategory() {
+		return category;
+	}
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
+	public void setCategory(Category category) {
+		this.category = category;
+	}
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
+	public Images getImages() {
+		return images;
+	}
 
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
+	public void setImages(Images images) {
+		this.images = images;
+	}
 
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    @PrePersist
-    protected void onCreate() {
-        createdAt = LocalDateTime.now();
-        updatedAt = LocalDateTime.now();
-    }
-
-    @PreUpdate
-    protected void onUpdate() {
-        updatedAt = LocalDateTime.now();
-    }
 }

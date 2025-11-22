@@ -10,26 +10,17 @@ import java.util.Optional;
 
 @Service
 public class CategoryService {
-    @Autowired
-    private CategoryRepository categoryRepository;
+	private final CategoryRepository categoryRepository;
 
-    public List<Category> getAllCategories() {
-        return categoryRepository.findAll();
-    }
+	public CategoryService(CategoryRepository categoryRepository) {
+		this.categoryRepository = categoryRepository;
+	}
 
-    public Category createCategory(Category category) {
-        return categoryRepository.save(category);
-    }
+	public List<Category> getAll() {
+		return categoryRepository.findAll();
+	}
 
-    public Optional<Category> getCategoryById(Long id) {
-        return categoryRepository.findById(id);
-    }
-
-    public Category updateCategory(Long id, Category category) {
-        return categoryRepository.save(category);
-    }
-
-    public void deleteCategory(Long id) {
-        categoryRepository.deleteById(id);
-    }
+	public Category create(Category category) {
+		return categoryRepository.save(category);
+	}
 }

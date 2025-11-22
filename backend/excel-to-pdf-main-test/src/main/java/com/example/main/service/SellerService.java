@@ -10,27 +10,18 @@ import java.util.Optional;
 
 @Service
 public class SellerService {
-    @Autowired
-    private SellerRepository sellerRepository;
+	private final SellerRepository sellerRepository;
 
-    public List<Seller> getAllSellers() {
-        return sellerRepository.findAll();
-    }
+	public SellerService(SellerRepository sellerRepository) {
+		this.sellerRepository = sellerRepository;
+	}
 
-    public Seller createSeller(Seller seller) {
-        return sellerRepository.save(seller);
-    }
+	public List<Seller> getAll() {
+		return sellerRepository.findAll();
+	}
 
-    public Optional<Seller> getSellerById(Long id) {
-        return sellerRepository.findById(id);
-    }
-
-    public Seller updateSeller(Long id, Seller seller) {
-        return sellerRepository.save(seller);
-    }
-
-    public void deleteSeller(Long id) {
-        sellerRepository.deleteById(id);
-    }
+	public Seller create(Seller seller) {
+		return sellerRepository.save(seller);
+	}
 }
 

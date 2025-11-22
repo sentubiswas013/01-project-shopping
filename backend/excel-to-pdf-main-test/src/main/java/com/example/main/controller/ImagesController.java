@@ -10,31 +10,16 @@ import java.util.List;
 @RestController
 @RequestMapping("/images")
 public class ImagesController {
-    @Autowired
-    private ImagesRepository imagesRepository;
+	@Autowired
+	private ImagesRepository imagesRepository;
 
-    @GetMapping
-    public List<Images> getAllImages() {
-        return imagesRepository.findAll();
-    }
+	@GetMapping
+	public List<Images> getAll() {
+		return imagesRepository.findAll();
+	}
 
-    @PostMapping
-    public Images createImage(@RequestBody Images image) {
-        return imagesRepository.save(image);
-    }
-
-    @GetMapping("/{id}")
-    public Images getImageById(@PathVariable Long id) {
-        return imagesRepository.findById(id).orElse(null);
-    }
-
-    @PutMapping("/{id}")
-    public Images updateImage(@PathVariable Long id, @RequestBody Images image) {
-        return imagesRepository.save(image);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteImage(@PathVariable Long id) {
-        imagesRepository.deleteById(id);
-    }
+	@PostMapping
+	public Images create(@RequestBody Images images) {
+		return imagesRepository.save(images);
+	}
 }

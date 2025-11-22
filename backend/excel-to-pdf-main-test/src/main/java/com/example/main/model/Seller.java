@@ -8,102 +8,68 @@ import java.util.Set;
 @Entity
 @Table(name = "sellers")
 public class Seller {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer sellerId;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long sellerId;
 
-    @Column(nullable = false)
-    private String name;
+	private String name;
 
-    @Column(nullable = false, unique = true)
-    private String email;
+	private String email;
 
-    @Column
-    private String phone;
+	private String phone;
 
-    @OneToMany(mappedBy = "seller", cascade = CascadeType.ALL)
-    private Set<Product> products = new HashSet<>();
+	private LocalDateTime createdAt;
 
-    @Column(nullable = false)
-    private LocalDateTime createdAt;
+	private LocalDateTime updatedAt;
 
-    @Column(nullable = false)
-    private LocalDateTime updatedAt;
+	@PrePersist
+	protected void onCreate() {
+		createdAt = LocalDateTime.now();
+		updatedAt = createdAt;
+	}
 
-    public Seller() {
-    }
+	@PreUpdate
+	protected void onUpdate() {
+		updatedAt = LocalDateTime.now();
+	}
 
-    public Seller(String name, String email, String phone) {
-        this.name = name;
-        this.email = email;
-        this.phone = phone;
-        this.products = new HashSet<>();
-    }
+	public Long getSellerId() {
+		return sellerId;
+	}
 
-    public Integer getSellerId() {
-        return sellerId;
-    }
+	public void setSellerId(Long sellerId) {
+		this.sellerId = sellerId;
+	}
 
-    public void setSellerId(Integer sellerId) {
-        this.sellerId = sellerId;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public String getPhone() {
+		return phone;
+	}
 
-    public String getPhone() {
-        return phone;
-    }
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
+	public LocalDateTime getCreatedAt() {
+		return createdAt;
+	}
 
-    public Set<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(Set<Product> products) {
-        this.products = products;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    @PrePersist
-    protected void onCreate() {
-        createdAt = LocalDateTime.now();
-        updatedAt = LocalDateTime.now();
-    }
-
-    @PreUpdate
-    protected void onUpdate() {
-        updatedAt = LocalDateTime.now();
-    }
+	public LocalDateTime getUpdatedAt() {
+		return updatedAt;
+	}
 }

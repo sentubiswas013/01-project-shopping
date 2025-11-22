@@ -7,52 +7,61 @@ import java.util.Set;
 
 
 @Entity
-@Table(name = "Images") 
+@Table(name = "images")
 public class Images {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer imageId;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long imageId;
 
-    @Column(nullable = false)
-    private String name;
-    
-    @Column(name = "image_url")
-    private String imageUrl;
+	private String name;
 
-    @OneToMany(mappedBy = "images", cascade = CascadeType.ALL)
-    private Set<Product> products = new HashSet<>();
+	private String imageUrl;
 
-    public Images() {
-    }
+	private LocalDateTime createdAt;
 
-    public Images(String name, String imageUrl) {
-        this.name = name;
-        this.imageUrl = imageUrl;
-        this.products = new HashSet<>();
-    }
+	private LocalDateTime updatedAt;
 
-    public Integer getImageId() { return imageId; }
+	@PrePersist
+	protected void onCreate() {
+		createdAt = LocalDateTime.now();
+		updatedAt = createdAt;
+	}
 
-    public void setImageId(Integer imageId) {  this.imageId = imageId; }
+	@PreUpdate
+	protected void onUpdate() {
+		updatedAt = LocalDateTime.now();
+	}
 
-    public String getName() {
-        return name;
-    }
+	public Long getImageId() {
+		return imageId;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setImageId(Long imageId) {
+		this.imageId = imageId;
+	}
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public Set<Product> getProducts() { return products; }
+	public String getImageUrl() {
+		return imageUrl;
+	}
 
-    public void setProducts(Set<Product> products) { this.products = products; }
-    
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
+	public LocalDateTime getCreatedAt() {
+		return createdAt;
+	}
+
+	public LocalDateTime getUpdatedAt() {
+		return updatedAt;
+	}
+
 }

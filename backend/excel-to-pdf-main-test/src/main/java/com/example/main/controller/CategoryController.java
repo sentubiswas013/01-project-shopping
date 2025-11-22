@@ -10,31 +10,16 @@ import java.util.List;
 @RestController
 @RequestMapping("/categories")
 public class CategoryController {
-    @Autowired
-    private CategoryRepository categoryRepository;
+	@Autowired
+	private CategoryRepository categoryRepository;
 
-    @GetMapping
-    public List<Category> getAllCategories() {
-        return categoryRepository.findAll();
-    }
+	@GetMapping
+	public List<Category> getAll() {
+		return categoryRepository.findAll();
+	}
 
-    @PostMapping
-    public Category createCategory(@RequestBody Category category) {
-        return categoryRepository.save(category);
-    }
-
-    @GetMapping("/{id}")
-    public Category getCategoryById(@PathVariable Long id) {
-        return categoryRepository.findById(id).orElse(null);
-    }
-
-    @PutMapping("/{id}")
-    public Category updateCategory(@PathVariable Long id, @RequestBody Category category) {
-        return categoryRepository.save(category);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteCategory(@PathVariable Long id) {
-        categoryRepository.deleteById(id);
-    }
+	@PostMapping
+	public Category create(@RequestBody Category category) {
+		return categoryRepository.save(category);
+	}
 }

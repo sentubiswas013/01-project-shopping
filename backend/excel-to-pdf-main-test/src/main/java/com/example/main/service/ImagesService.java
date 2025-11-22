@@ -10,26 +10,17 @@ import java.util.Optional;
 
 @Service
 public class ImagesService {
-    @Autowired
-    private ImagesRepository imagesRepository;
+	private final ImagesRepository imagesRepository;
 
-    public List<Images> getAllImages() {
-        return imagesRepository.findAll();
-    }
+	public ImagesService(ImagesRepository imagesRepository) {
+		this.imagesRepository = imagesRepository;
+	}
 
-    public Images createImage(Images image) {
-        return imagesRepository.save(image);
-    }
+	public List<Images> getAll() {
+		return imagesRepository.findAll();
+	}
 
-    public Optional<Images> getImageById(Long id) {
-        return imagesRepository.findById(id);
-    }
-
-    public Images updateImage(Long id, Images image) {
-        return imagesRepository.save(image);
-    }
-
-    public void deleteImage(Long id) {
-        imagesRepository.deleteById(id);
-    }
+	public Images create(Images images) {
+		return imagesRepository.save(images);
+	}
 }
