@@ -1,10 +1,10 @@
 // Product.tsx
-import React from 'react';
 import { useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faHeart, faSyncAlt, faSearch, faStar } from '@fortawesome/free-solid-svg-icons';
 import type { ProductProps } from '../../core/services/model';
 import { addToCart } from '../../core/redux/actions/cartActions';
+import { useNavigate } from 'react-router-dom';
 
 export function Product({data}: {data: ProductProps}) {
   const dispatch = useDispatch();
@@ -16,6 +16,14 @@ export function Product({data}: {data: ProductProps}) {
     console.log('Adding to cart:', product);
     dispatch(addToCart(product));
     console.log('Action dispatched');
+  };
+  const navigate = useNavigate();
+
+  const handleBuy = () => {
+    // Add item to cart then go to checkout
+    dispatch(addToCart(product));
+    // navigate to checkout page
+    navigate('/Checkout');
   };
   return (
     <div className="product-item bg-light mb-4">
@@ -40,7 +48,7 @@ export function Product({data}: {data: ProductProps}) {
       <div className="text-center py-4 position-relative">
         <div className="product-add-to-cart">
           <button className="btn btn-outline-dark" type="button" onClick={handleAddToCart}>Add To Cart</button>
-          <button className="btn btn-outline-dark" type="button">Buy</button>
+          <button className="btn btn-outline-dark" type="button" onClick={handleBuy}>Buy</button>
         </div>
         <h6 className="text-decoration-none text-truncate">{product.name}</h6>
         <div className="d-flex align-items-center justify-content-center mt-2">

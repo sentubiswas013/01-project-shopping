@@ -31,7 +31,7 @@ export function CartItems({ title }: { title: string }) {
   return (
     <>
     <table className="table table-light table-borderless table-hover text-center mb-0">
-      <thead className="thead-dark">
+      <thead className="table-dark">
         <tr>
           <th>Products</th>
           <th>Price</th>
@@ -50,28 +50,24 @@ export function CartItems({ title }: { title: string }) {
             <td className="align-middle">${item.product.price.toFixed(2)}</td>
             <td className="align-middle">
               <div className="input-group quantity mx-auto" style={{width: '100px'}}>
-                <div className="input-group-btn">
-                  <button 
-                    className="btn btn-sm btn-primary btn-minus" 
-                    onClick={() => handleQuantityChange(item.product.productId, item.quantity - 1)}
-                  >
-                    <FontAwesomeIcon icon={faMinus} />
-                  </button>
-                </div>
+                <button 
+                  className="btn btn-sm btn-primary btn-minus input-group-text" 
+                  onClick={() => handleQuantityChange(item.product.productId, item.quantity - 1)}
+                >
+                  <FontAwesomeIcon icon={faMinus} />
+                </button>
                 <input 
                   type="text" 
                   className="form-control form-control-sm bg-secondary border-0 text-center" 
                   value={item.quantity}
                   readOnly
                 />
-                <div className="input-group-btn">
-                  <button 
-                    className="btn btn-sm btn-primary btn-plus"
-                    onClick={() => handleQuantityChange(item.product.productId, item.quantity + 1)}
-                  >
-                    <FontAwesomeIcon icon={faPlus} />
-                  </button>
-                </div>
+                <button 
+                  className="btn btn-sm btn-primary btn-plus input-group-text"
+                  onClick={() => handleQuantityChange(item.product.productId, item.quantity + 1)}
+                >
+                  <FontAwesomeIcon icon={faPlus} />
+                </button>
               </div>
             </td>
             <td className="align-middle">${(item.product.price * item.quantity).toFixed(2)}</td>

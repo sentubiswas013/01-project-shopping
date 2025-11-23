@@ -48,7 +48,7 @@ export function Checkout({ title }: { title: string }) {
 
     {/*-- Product Carousel Start --*/}
     <div className="container-fluid py-5">
-        <h2 className="section-title position-relative text-uppercase mx-xl-5 mb-4"><span className="bg-secondary pr-3">You May Also Like</span></h2>
+        <h2 className="section-title position-relative text-uppercase mx-xl-5 mb-4"><span className="bg-secondary pe-3">You May Also Like</span></h2>
         <div className="row px-xl-5">
             <div className="col">
                 <ProductCarousel />
