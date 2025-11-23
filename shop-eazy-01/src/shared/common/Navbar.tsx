@@ -90,9 +90,9 @@ export function Navbar({ title }: { title: string }) {
                         <div className="navbar-nav mr-auto py-0">
                             <Link className="nav-link active" to="/">Home</Link> 
                             <Link className="nav-link" to="/Shop">Shop</Link>                            
-                            <Link className="nav-link" to="/ProductDetails">Product Details</Link>                            
+                            <Link className="nav-link" to="/product-details">Product Details</Link>                            
                             <Link className="nav-link" to="/Checkout">Checkout</Link>                            
-                            <Link className="nav-link" to="/ShoppingCart">Shopping Cart</Link>                            
+                            <Link className="nav-link" to="/shopping-cart">Shopping Cart</Link>                            
                             <Link className="nav-link" to="/Contact">Contact</Link>
                         </div>
                         <div className="navbar-nav ml-auto py-0 d-none d-lg-block">

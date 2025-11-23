@@ -13,6 +13,9 @@ import ShoppingCart from './pages/shoppingCart/ShoppingCart';
 import Contact from './pages/contact/Contact';
 import Login from './pages/login/login';
 import Navbar from './shared/common/Navbar';
+import About from './pages/about/About';
+import Help from './pages/help/Help';
+import Faqs from './pages/help/Faqs';
 
 function App() {
 
@@ -21,14 +24,16 @@ function App() {
       {/* <Navbar title="store" /> */}
       <div>
         <Routes>
-          <Route path="/" element={<Login title="login" />} />
-          {/* <Route path="/" element={<Home title="home" />} /> */}
-          <Route path="/home" element={<Home title="home" />} />
-          <Route path="/Shop" element={<Shop title="Shop" />} />
-          <Route path="/ProductDetails" element={<ProductDetails title="ProductDetails" />} />
-          <Route path="/Checkout" element={<Checkout title="Checkout" />} />
-          <Route path="/ShoppingCart" element={<ShoppingCart title="ShoppingCart" />} />
-          <Route path="/Contact" element={<Contact title="Contact" />} />
+          <Route path="/" element={<Login />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/shop" element={<Shop />} />
+          <Route path="/product-details" element={<ProductDetails />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/shopping-cart" element={<ShoppingCart />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/help" element={<Help />} />
+          <Route path="/help/faqs" element={<Faqs />} />
         </Routes>
       </div>
     </>

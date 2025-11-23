@@ -6,13 +6,13 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  */
 import React, { useState } from 'react'; 
+import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
- import { useNavigate } from 'react-router-dom';
 
 export function Topbar({ title }: { title: string }) {
     const navigate = useNavigate();
-  // Section: for account
+    // Section: for account
     const [isOpenAccount, setIsOpenAccount] = useState(false);            
     const toggleCollapseAccount = () => setIsOpenAccount(!isOpenAccount);
   
@@ -36,11 +36,13 @@ export function Topbar({ title }: { title: string }) {
     <div className="container-fluid">
         <div className="row bg-secondary py-1 px-xl-5">
             <div className="col-lg-6 d-none d-lg-block">
-                <div className="d-inline-flex align-items-center h-100">
-                    <a className="text-body me-3" href="">About</a>
-                    <a className="text-body me-3" href="">Contact</a>
-                    <a className="text-body me-3" href="">Help</a>
-                    <a className="text-body me-3" href="">FAQs</a>
+                    <div className="d-inline-flex align-items-center h-100">
+                    <nav className='d-inline-flex'>
+                        <Link className="nav-link me-3" to="/about">About</Link>
+                        <Link className="nav-link me-3" to="/Contact">Contact</Link>
+                        <Link className="nav-link me-3" to="/help">Help</Link>
+                        <Link className="nav-link" to="/help/faqs">FAQs</Link>
+                    </nav>
                 </div>
             </div>
             <div className="col-lg-6 text-end text-lg-right">
