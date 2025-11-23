@@ -38,7 +38,7 @@ export const productService = {
     return response.data;
   },
 
-  async getProducts(token: string): Promise<User> {
+  async getProducts(token: string): Promise<any[]> {
     const response = await api.get(`${API_URL}/products`, {
       headers: { Authorization: `Bearer ${token}` },
     });

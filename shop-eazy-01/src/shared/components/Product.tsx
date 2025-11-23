@@ -2,22 +2,9 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faHeart, faSyncAlt, faSearch, faStar } from '@fortawesome/free-solid-svg-icons';
-import product1 from '../../assets/img/products/product-1.jpg';
+import type { ProductProps } from '../../core/services/model';
 
-export type ProductProps = {
-  name: string;
-  price: number;
-  oldPrice?: number;
-  rating: number;
-  image: string;
-  reviews: number;
-  sale:  string;
-  status:  string;
-  stock: string;
-  data: any
-};
-
-export function Product({data}: {data: any}) {
+export function Product({data}: {data: ProductProps}) {
   console.log('Product data===:', data);
   // If data is an array, use the first item
   const product = Array.isArray(data) ? data[0] : data;

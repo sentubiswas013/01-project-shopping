@@ -1,26 +1,41 @@
-/*
- * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- This is a starter component and can be deleted.
- * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- Delete this file and get started with your project!
- * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- */
-import React, { useState } from 'react';
- import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useState, useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThLarge, faBars } from '@fortawesome/free-solid-svg-icons';
 
-import products from '../../core/config/products';
-import Product from '../../shared/components/product';
+// import products from '../../core/config/products';
+import Product from '../../shared/components/Product';
+import { productService } from '../../core/services/productService';
+import type { ProductProps } from '../../core/services/model';
 
 export function ShopProducts({ title }: { title: string }) {
 
-  // Section: for sorting
-  const [isOpenSort, setIsOpenSort] = useState(false);            
-  const toggleCollapseSort = () => setIsOpenSort(!isOpenSort);
+const [products, setProducts] = useState<ProductProps[]>([]);
+const [loading, setLoading] = useState(true);
+// Section: for sorting
+const [isOpenSort, setIsOpenSort] = useState(false);            
+// Section: for showing
+const [isOpenLimit, setIsOpenLimit] = useState(false);
 
-  // Section: for showing
-  const [isOpenLimit, setIsOpenLimit] = useState(false);          
-  const toggleCollapseLimit = () => setIsOpenLimit(!isOpenLimit);
+useEffect(() => {
+const fetchProducts = async () => {
+    try {
+    const data = await productService.getProducts("12321");
+    console.log('Fetched products data:', data);
+    setProducts(data);
+    setLoading(false);
+    } catch (error) {
+    setLoading(false);
+    console.error('Error fetching products:', error);
+    }
+};
+
+fetchProducts();
+}, []);
+
+const toggleCollapseSort = () => setIsOpenSort(!isOpenSort);
+const toggleCollapseLimit = () => setIsOpenLimit(!isOpenLimit);
+
+if (loading) return <div>Loading...</div>;
 
   return (
     <>
@@ -64,8 +79,8 @@ export function ShopProducts({ title }: { title: string }) {
             </div>
                   
             {products.map((product) => (
-            <div key={product.id} className="col-lg-4 col-md-6 col-sm-6 pb-1">
-                <Product {...product} />
+            <div key={product.productId} className="col-lg-4 col-md-6 col-sm-6 pb-1">
+                <Product data={product}/>
             </div>
             ))} 
             

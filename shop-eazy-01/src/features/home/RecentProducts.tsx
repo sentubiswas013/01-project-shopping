@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 // import products from '../../core/config/products';
-import Product from '../../shared/components/product';
+import Product from '../../shared/components/Product';
 import { productService } from '../../core/services/productService';
- 
+ import type { ProductProps } from '../../core/services/model';
+
 export function RecentProducts({ title }: { title: string }) {
-  const [products, setProducts] = useState<any[]>([]);
+  const [products, setProducts] = useState<ProductProps[]>([]);
   const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -36,7 +37,7 @@ export function RecentProducts({ title }: { title: string }) {
         <div className="row px-xl-5">
           {products.slice(0, 8).map((product) => (
             <div key={product.productId} className="col-lg-3 col-md-4 col-sm-6 pb-1">
-              <Product data={products}/>
+              <Product data={product}/>
             </div>
           ))}
         </div>

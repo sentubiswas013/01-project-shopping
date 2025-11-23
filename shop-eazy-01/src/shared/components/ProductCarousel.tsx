@@ -1,14 +1,37 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/autoplay';
 import 'swiper/css/free-mode';
 
 import { Autoplay, FreeMode } from 'swiper/modules';
-import products from '../../core/config/products';
-import Product from '../../shared/components/product';
+import Product from '../../shared/components/Product';
+import { productService } from '../../core/services/productService';
+import type { ProductProps } from '../../core/services/model';
 
 const ProductCarousel = () => {
+  const [products, setProducts] = useState<ProductProps[]>([]);
+  const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+      const fetchProducts = async () => {
+        try {
+          const data = await productService.getProducts("12321");
+          console.log('Fetched products data:', data);
+          setProducts(data);
+          setLoading(false);
+          console.log('Products fetched:', data);
+        } catch (error) {
+          setLoading(false)
+          console.error('Error fetching products:', error);
+        }
+      };
+  
+      fetchProducts();
+    }, []);
+
+  if (loading) return <div>Loading...</div>;
+
   return (
     <div className="container-fluid py-5">
       <div className="row">
@@ -29,9 +52,9 @@ const ProductCarousel = () => {
               }}
             >
               {products.map((product, index) => (
-                <SwiperSlide key={index}>
-                    <Product {...product} />
-                    </SwiperSlide>
+                <SwiperSlide key={index}> 
+                    <Product data={product}/>
+                  </SwiperSlide>
                 ))}
             </Swiper>
         </div>
