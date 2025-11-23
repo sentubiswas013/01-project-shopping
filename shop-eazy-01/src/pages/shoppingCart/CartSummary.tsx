@@ -1,18 +1,14 @@
-/*
- * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- This is a starter component and can be deleted.
- * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- Delete this file and get started with your project!
- * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- */
-import React, { useState } from 'react'; 
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../core/redux/store'; 
  
 export function CartSummary({ title }: { title: string }) {
+  const { totalAmount, totalItems } = useSelector((state: RootState) => state.cart);
+  const shipping = totalAmount > 0 ? 10 : 0;
+  const finalTotal = totalAmount + shipping;
 
   return (
     <>
-
-    {/*-- Cart Start --*/}
     <form className="mb-30" action="">
         <div className="input-group">
             <input type="text" className="form-control border-0 p-4" placeholder="Coupon Code"/>
@@ -25,23 +21,22 @@ export function CartSummary({ title }: { title: string }) {
     <div className="bg-light p-30 mb-5">
         <div className="border-bottom pb-2">
             <div className="d-flex justify-content-between mb-3">
-                <h6>Subtotal</h6>
-                <h6>$150</h6>
+                <h6>Subtotal ({totalItems} items)</h6>
+                <h6>${totalAmount.toFixed(2)}</h6>
             </div>
             <div className="d-flex justify-content-between">
                 <h6 className="font-weight-medium">Shipping</h6>
-                <h6 className="font-weight-medium">$10</h6>
+                <h6 className="font-weight-medium">${shipping.toFixed(2)}</h6>
             </div>
         </div>
         <div className="pt-2">
             <div className="d-flex justify-content-between mt-2">
                 <h5>Total</h5>
-                <h5>$160</h5>
+                <h5>${finalTotal.toFixed(2)}</h5>
             </div>
             <button className="btn btn-block btn-primary font-weight-bold my-3 py-3">Proceed To Checkout</button>
         </div>
     </div>
-    {/*-- Cart End --*/}
     </>
   );
 }

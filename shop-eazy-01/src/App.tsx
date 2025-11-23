@@ -5,13 +5,13 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import './assets/css/style.css';
 import './App.css'
 
-import Home from './features/home/Home';
-import Shop from './features/shop/Shop';
-import ProductDetails from './features/productDetails/ProductDetails';
-import Checkout from './features/checkout/Checkout';
-import ShoppingCart from './features/shoppingCart/ShoppingCart';
-import Contact from './features/contact/Contact';
-import Login from './features/login/login';
+import Home from './pages/home/Home';
+import Shop from './pages/shop/Shop';
+import ProductDetails from './pages/productDetails/ProductDetails';
+import Checkout from './pages/checkout/Checkout';
+import ShoppingCart from './pages/shoppingCart/ShoppingCart';
+import Contact from './pages/contact/Contact';
+import Login from './pages/login/login';
 import Navbar from './shared/common/Navbar';
 
 function App() {

@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import alertReducer from './reducer/alertReducer';
-// import other reducers as needed
+import cartReducer from './reducer/cartReducer';
 
 const store = configureStore({
   reducer: {
     alert: alertReducer,
-    // add other reducers here
+    cart: cartReducer,
   },
 });
 

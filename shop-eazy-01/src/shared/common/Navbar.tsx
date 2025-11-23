@@ -6,13 +6,14 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  */
 import React, { useState } from 'react';
-
+import { useSelector } from 'react-redux';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faHeart, faAngleDown, faAngleRight, faBars } from '@fortawesome/free-solid-svg-icons';
+import { RootState } from '../../core/redux/store';
  
 export function Navbar({ title }: { title: string }) {
+    const { totalItems } = useSelector((state: RootState) => state.cart);
 
     // Section: for category menu
     const [isOpenMenu, setIsOpenMenu] = useState(false);               // Controls category collapse
@@ -98,10 +99,10 @@ export function Navbar({ title }: { title: string }) {
                                 <FontAwesomeIcon icon={faHeart} className="text-primary" />
                                 <span className="badge text-secondary border border-secondary rounded-circle" style={{ paddingBottom: '2px' }}>0</span>
                             </a>
-                            <a href="#" className="btn px-0 ml-3">
+                            <Link to="/ShoppingCart" className="btn px-0 ml-3">
                                 <FontAwesomeIcon icon={faShoppingCart} className="text-primary" />
-                                <span className="badge text-secondary border border-secondary rounded-circle" style={{ paddingBottom: '2px' }}>0</span>
-                            </a>
+                                <span className="badge text-secondary border border-secondary rounded-circle" style={{ paddingBottom: '2px' }}>{totalItems}</span>
+                            </Link>
                         </div>
                     </div>
                 </nav>

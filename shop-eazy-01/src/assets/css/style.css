@@ -1,5 +1,11 @@
 body{
   background: #F5F5F5;
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #6C757D;
+  text-align: left;
 }
 /********** Custom CSS ************/
 .h1, h2, h3 {
@@ -414,16 +420,16 @@ a:hover {
   margin-top: 0;
   transition: .3s 0s;
 }
-.product-item:hover .product-add-to-cart a.btn:first-child {
+.product-item:hover .product-add-to-cart .btn:first-child {
   color: #fff;
   border: 1px solid #ff9f00;
-  background: #ff9f00;
+  background: #ff9f00  !important;
 }
 
-.product-item:hover .product-add-to-cart a.btn:nth-child(2) {
+.product-item:hover .product-add-to-cart .btn:nth-child(2) {
   color: #fff;
   border: 1px solid #fb641b;
-  background: #fb641b;
+  background: #fb641b !important;
 }
 
 .product-item .product-img img {
@@ -531,4 +537,8 @@ a:hover {
   100% {
     transform: translateY(-15px);
   }
+}
+
+.description{
+  height: 60px;
 }

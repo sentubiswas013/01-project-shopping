@@ -55,7 +55,7 @@ if (loading) return <div>Loading...</div>;
                     <div className="ml-2">
                         <div className="btn-group">
                             <button type="button" className="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown" onClick={toggleCollapseSort}
-                            >Sorting - {isOpenSort}</button>
+                            >Sorting</button>
                             {isOpenSort && (
                             <div className="dropdown-menu dropdown-menu-show dropdown-menu-right">
                                 <a className="dropdown-item" href="#">Latest</a>
@@ -65,7 +65,7 @@ if (loading) return <div>Loading...</div>;
                             )}
                         </div>
                         <div className="btn-group ml-2">
-                            <button type="button" className="btn btn-sm btn-light dropdown-toggle" onClick={toggleCollapseLimit}data-toggle="dropdown">Showing</button>
+                            <button type="button" className="btn btn-sm btn-light dropdown-toggle" onClick={toggleCollapseLimit} data-toggle="dropdown">Showing</button>
                             {isOpenLimit && (
                             <div className="dropdown-menu dropdown-menu-show dropdown-menu-right">
                                 <a className="dropdown-item" href="#">10</a>

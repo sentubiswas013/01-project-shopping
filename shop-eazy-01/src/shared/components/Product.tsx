@@ -1,13 +1,20 @@
 // Product.tsx
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faHeart, faSyncAlt, faSearch, faStar } from '@fortawesome/free-solid-svg-icons';
 import type { ProductProps } from '../../core/services/model';
+import { addToCart } from '../../core/redux/actions/cartActions';
 
 export function Product({data}: {data: ProductProps}) {
+  const dispatch = useDispatch();
   console.log('Product data===:', data);
   // If data is an array, use the first item
   const product = Array.isArray(data) ? data[0] : data;
+
+  const handleAddToCart = () => {
+    dispatch(addToCart(product));
+  };
   return (
     <div className="product-item bg-light mb-4">
       <div className="product-img position-relative overflow-hidden">
@@ -22,18 +29,18 @@ export function Product({data}: {data: ProductProps}) {
           </div>
         )}
         <div className="product-action">
-          <a className="btn btn-outline-dark btn-square" href=""><FontAwesomeIcon icon={faShoppingCart} /></a>
-          <a className="btn btn-outline-dark btn-square" href=""><FontAwesomeIcon icon={faHeart} /></a>
-          <a className="btn btn-outline-dark btn-square" href=""><FontAwesomeIcon icon={faSyncAlt} /></a>
-          <a className="btn btn-outline-dark btn-square" href=""><FontAwesomeIcon icon={faSearch} /></a>
+          <button className="btn btn-outline-dark btn-square" type="button" onClick={handleAddToCart}><FontAwesomeIcon icon={faShoppingCart} /></button>
+          <button className="btn btn-outline-dark btn-square" type="button"><FontAwesomeIcon icon={faHeart} /></button>
+          <button className="btn btn-outline-dark btn-square" type="button"><FontAwesomeIcon icon={faSyncAlt} /></button>
+          <button className="btn btn-outline-dark btn-square" type="button"><FontAwesomeIcon icon={faSearch} /></button>
         </div>
       </div>
       <div className="text-center py-4 position-relative">
         <div className="product-add-to-cart">
-          <a className="btn btn-outline-dark " href="#">Add To Cart</a>
-          <a className="btn btn-outline-dark " href="#">Buy</a>
+          <button className="btn btn-outline-dark" type="button" onClick={handleAddToCart}>Add To Cart</button>
+          <button className="btn btn-outline-dark" type="button">Buy</button>
         </div>
-        <a className="h6 text-decoration-none text-truncate" href="">{product.name}</a>
+        <h6 className="text-decoration-none text-truncate">{product.name}</h6>
         <div className="d-flex align-items-center justify-content-center mt-2">
           <h5>${product.price?.toFixed(2)} </h5>
           {product.oldPrice && (
@@ -45,13 +52,13 @@ export function Product({data}: {data: ProductProps}) {
             <small key={i}>
               <FontAwesomeIcon
                 icon={faStar}
-                className={i < Math.round(product.ratingAvg) ? 'text-primary mr-1' : 'text-muted mr-1'}
+                className={i < Math.round(product.ratingAvg || 0) ? 'text-primary mr-1' : 'text-muted mr-1'}
               />
             </small>
           ))}
           <small>({product.reviews})</small>
         </div>
-        <div className="mt-2">
+        <div className="mt-2 description">
           <span className="text-muted">{product.description}</span>
         </div>
       </div>
