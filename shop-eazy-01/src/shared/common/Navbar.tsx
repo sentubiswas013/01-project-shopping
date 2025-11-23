@@ -88,7 +88,7 @@ export function Navbar({ title }: { title: string }) {
                     </button>
                     <div className="collapse navbar-collapse justify-content-between" id="navbarCollapse">                        
                         <div className="navbar-nav mr-auto py-0">
-                            <Link className="nav-link active" to="/">Home</Link> 
+                            <Link className="nav-link active" to="/home">Home</Link> 
                             <Link className="nav-link" to="/Shop">Shop</Link>                            
                             <Link className="nav-link" to="/product-details">Product Details</Link>                            
                             <Link className="nav-link" to="/Checkout">Checkout</Link>                            
@@ -100,7 +100,7 @@ export function Navbar({ title }: { title: string }) {
                                 <FontAwesomeIcon icon={faHeart} className="text-primary" />
                                 <span className="badge text-secondary border border-secondary rounded-circle" style={{ paddingBottom: '2px' }}>0</span>
                             </a>
-                            <Link to="/ShoppingCart" className="btn px-0 ml-3">
+                            <Link to="/shopping-cart" className="btn px-0 ml-3">
                                 <FontAwesomeIcon icon={faShoppingCart} className="text-primary" />
                                 <span className="badge text-secondary border border-secondary rounded-circle" style={{ paddingBottom: '2px' }}>{totalItems}</span>
                             </Link>
