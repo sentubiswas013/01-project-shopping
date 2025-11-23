@@ -34,7 +34,7 @@ export function ProductDetailsCarousel({ title }: { title: string }) {
             key={index}
             src={image}
             alt={`Thumbnail ${index + 1}`}
-            className={`border ${activeIndex === index ? 'border-primary border-3' : 'border-secondary'}`}
+            className={`border ${activeIndex === index ? 'border-warning border-3' : 'border-secondary'}`}
             style={{ width: '80px', height: '80px', objectFit: 'cover', cursor: 'pointer', flexShrink: 0 }}
             onClick={() => setActiveIndex(index)}
           />

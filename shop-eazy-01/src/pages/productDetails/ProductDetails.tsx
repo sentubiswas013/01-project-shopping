@@ -39,11 +39,11 @@ export function ProductDetails({ title }: { title: string }) {
     {/*-- Shop Detail Start --*/}
     <div className="container-fluid pb-5">
         <div className="row px-xl-5">
-            <div className="col-lg-5 mb-5">
+            <div className="col-lg-5 mb-30">
                 <ProductDetailsCarousel title="ProductDescription"/>
             </div>
 
-            <div className="col-lg-7 h-auto mb-5">
+            <div className="col-lg-7 h-auto mb-30">
                 <ProductInfo title="ProductInfo"/>
             </div>
         </div>
@@ -56,8 +56,8 @@ export function ProductDetails({ title }: { title: string }) {
     {/*-- Shop Detail End --*/}
 
     {/*-- Product Carousel Start --*/}
-    <div className="container-fluid py-5">
-        <h2 className="section-title position-relative text-uppercase mx-xl-5 mb-4"><span className="bg-secondary pe-3">You May Also Like</span></h2>
+    <div className="container-fluid py-0">
+        <h2 className="section-title position-relative text-uppercase mx-xl-5 mb-4"><span className="bg-secondary pr-3">You May Also Like</span></h2>
         <div className="row px-xl-5">
             <div className="col">
                 <ProductCarousel />
