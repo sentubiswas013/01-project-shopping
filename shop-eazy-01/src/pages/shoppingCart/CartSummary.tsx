@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../core/redux/store'; 
+import type { RootState } from '../../core/redux/store'; 
  
 export function CartSummary({ title }: { title: string }) {
   const { totalAmount, totalItems } = useSelector((state: RootState) => state.cart);

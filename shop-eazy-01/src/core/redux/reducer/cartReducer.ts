@@ -1,4 +1,5 @@
-import { CartItem, addToCart, removeFromCart, updateQuantity, clearCart } from '../actions/cartActions';
+import { addToCart, removeFromCart, updateQuantity, clearCart } from '../actions/cartActions';
+import type { CartItem } from '../actions/cartActions';
 
 export interface CartState {
   items: CartItem[];
@@ -19,8 +20,10 @@ const calculateTotals = (items: CartItem[]) => {
 };
 
 export default function cartReducer(state = initialState, action: any): CartState {
+  console.log('Cart reducer received action:', action.type, action.payload);
   switch (action.type) {
     case addToCart.type: {
+      console.log('Processing ADD_TO_CART action');
       const product = action.payload;
       const existingItem = state.items.find(item => item.product.productId === product.productId);
       

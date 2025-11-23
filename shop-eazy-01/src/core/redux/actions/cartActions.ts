@@ -1,5 +1,5 @@
 import { createAction } from '@reduxjs/toolkit';
-import { ProductProps } from '../../services/model';
+import type { ProductProps } from '../../services/model';
 
 export interface CartItem {
   product: ProductProps;

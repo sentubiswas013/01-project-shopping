@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus, faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { RootState } from '../../core/redux/store';
+import type { RootState } from '../../core/redux/store';
 import { removeFromCart, updateQuantity } from '../../core/redux/actions/cartActions';
  
 export function CartItems({ title }: { title: string }) {

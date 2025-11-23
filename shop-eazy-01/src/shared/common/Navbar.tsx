@@ -10,10 +10,11 @@ import { useSelector } from 'react-redux';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faHeart, faAngleDown, faAngleRight, faBars } from '@fortawesome/free-solid-svg-icons';
-import { RootState } from '../../core/redux/store';
+import type { RootState } from '../../core/redux/store';
  
 export function Navbar({ title }: { title: string }) {
     const { totalItems } = useSelector((state: RootState) => state.cart);
+    console.log('Navbar totalItems:', totalItems);
 
     // Section: for category menu
     const [isOpenMenu, setIsOpenMenu] = useState(false);               // Controls category collapse

@@ -13,7 +13,9 @@ export function Product({data}: {data: ProductProps}) {
   const product = Array.isArray(data) ? data[0] : data;
 
   const handleAddToCart = () => {
+    console.log('Adding to cart:', product);
     dispatch(addToCart(product));
+    console.log('Action dispatched');
   };
   return (
     <div className="product-item bg-light mb-4">
