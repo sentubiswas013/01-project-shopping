@@ -5,12 +5,13 @@ import { Provider } from 'react-redux';
 import { AuthProvider, useAuth } from './core/services/authContext';
 import store from './core/redux/store';
 import App from './App';
-import SessionExpire from './shared/components/SessionExpire';
+import SessionExpire from './shared/common/SessionExpire';
 
 function SessionManager({ children }: { children: React.ReactNode }) {
   const navigate = useNavigate();
-  const { isAuthenticated, logout, extendSession } = useAuth();
+  const { isAuthenticated, logout, extendSession, expiresAt } = useAuth();
   const [expireModalOpen, setExpireModalOpen] = useState(false);
+  const [timeLeftSeconds, setTimeLeftSeconds] = useState<number | null>(null);
   const alertedRef = React.useRef(false);
 
   useEffect(() => {
@@ -21,27 +22,29 @@ function SessionManager({ children }: { children: React.ReactNode }) {
       return;
     }
     const checkExpiry = () => {
-      const token = localStorage.getItem('token');
-      const expiresAt = parseInt(localStorage.getItem('token_expires_at') || '0', 10);
-      if (!token || !expiresAt) {
+      const expires = expiresAt;
+      if (!expires) {
         setExpireModalOpen(false);
         window.sessionStorage.removeItem('token_expiry_alerted');
         alertedRef.current = false;
+        setTimeLeftSeconds(null);
         return;
       }
-      const timeLeft = expiresAt - Date.now();
+      const timeLeft = expires - Date.now();
+      const secondsLeft = Math.ceil(timeLeft / 1000);
+      setTimeLeftSeconds(secondsLeft > 0 ? secondsLeft : 0);
       if (timeLeft <= 0) {
-        localStorage.removeItem('token');
-        localStorage.removeItem('token_expires_at');
+        // trigger logout via context so provider clears state
+        logout();
         setExpireModalOpen(false);
         window.sessionStorage.removeItem('token_expiry_alerted');
         alertedRef.current = false;
-        navigate('/');
+        setTimeLeftSeconds(null);
         return;
       }
-  // Modal appears 10 seconds before expiry
-  if (timeLeft < 10 * 1000 && timeLeft > 0) {
-        if (!alertedRef.current) {
+      // Modal appears 10 seconds before expiry
+      if (timeLeft < 10 * 1000 && timeLeft > 0) {
+        if (!alertedRef.current && !window.sessionStorage.getItem('token_expiry_alerted')) {
           setExpireModalOpen(true);
           window.sessionStorage.setItem('token_expiry_alerted', '1');
           alertedRef.current = true;
@@ -50,11 +53,12 @@ function SessionManager({ children }: { children: React.ReactNode }) {
         setExpireModalOpen(false);
         window.sessionStorage.removeItem('token_expiry_alerted');
         alertedRef.current = false;
+        setTimeLeftSeconds(null);
       }
     };
     const interval = setInterval(checkExpiry, 1000);
     return () => clearInterval(interval);
-  }, [isAuthenticated, navigate]);
+  }, [isAuthenticated, expiresAt, navigate]);
 
   const handleContinueSession = () => {
     extendSession();
@@ -68,7 +72,7 @@ function SessionManager({ children }: { children: React.ReactNode }) {
 
   return (
     <>
-      <SessionExpire open={expireModalOpen} onContinue={handleContinueSession} onLogout={handleLogoutSession} />
+      <SessionExpire open={expireModalOpen} onContinue={handleContinueSession} onLogout={handleLogoutSession} remainingSeconds={timeLeftSeconds} />
       {children}
     </>
   );

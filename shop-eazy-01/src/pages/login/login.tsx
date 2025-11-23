@@ -53,7 +53,7 @@ export function Login({ title }: { title: string }) {
       const user = await authorisationService.login({ username: form.username, password: form.password });
       console.log('Login successful:', user);
       localStorage.setItem('token', user.email || 'dummy-token');
-      const expiresAt = Date.now() + 30 * 1000; // 30 seconds for testing
+      const expiresAt = Date.now() + 10 * 60 * 1000; // 10 minutes session
       localStorage.setItem('token_expires_at', expiresAt.toString());
       setLoading(true);
       // dispatch(showAlert({

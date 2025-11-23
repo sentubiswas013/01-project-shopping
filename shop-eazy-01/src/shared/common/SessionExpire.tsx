@@ -10,14 +10,16 @@ interface SessionExpireProps {
   open: boolean;
   onContinue: () => void;
   onLogout: () => void;
+  remainingSeconds?: number | null;
 }
-
-const SessionExpire: React.FC<SessionExpireProps> = ({ open, onContinue, onLogout }) => (
+const SessionExpire: React.FC<SessionExpireProps> = ({ open, onContinue, onLogout, remainingSeconds = null }) => (
   <Dialog open={open} onClose={onLogout} maxWidth="xs" fullWidth>
     <DialogTitle>Session Expiring Soon</DialogTitle>
     <DialogContent>
       <Typography variant="body1">
-        Your session is about to expire. Do you want to continue or logout?
+        {remainingSeconds && remainingSeconds > 0
+          ? `Your session will expire in ${remainingSeconds} second${remainingSeconds > 1 ? 's' : ''}. Do you want to continue or logout?`
+          : 'Your session is about to expire. Do you want to continue or logout?'}
       </Typography>
     </DialogContent>
     <DialogActions>

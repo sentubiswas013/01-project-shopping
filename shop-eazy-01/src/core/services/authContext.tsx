@@ -9,6 +9,7 @@ interface AuthContextType {
   clearRoles: () => void;
   logout: () => void;
   extendSession: () => void;
+  expiresAt: number | null;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -25,12 +26,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const extendSession = () => {
-    const newExpiresAt = Date.now() + 30 * 1000; // extend by 30 seconds for testing
+    const newExpiresAt = Date.now() + 10 * 60 * 1000; // extend by 10 minutes
     localStorage.setItem('token_expires_at', newExpiresAt.toString());
     window.sessionStorage.removeItem('token_expiry_alerted');
+    setExpiresAt(newExpiresAt);
   };
   const [roles, setRoles] = useState<UserRole[]>([]);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const [expiresAt, setExpiresAt] = useState<number | null>(null);
 
   useEffect(() => {
     const checkToken = () => {
@@ -38,6 +41,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       const expiresAt = parseInt(localStorage.getItem('token_expires_at') || '0', 10);
       if (token && expiresAt && Date.now() < expiresAt) {
         setIsAuthenticated(true);
+        setExpiresAt(expiresAt);
       } else {
         // If expired or missing, clear everything
         localStorage.removeItem('token');
@@ -45,6 +49,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         setIsAuthenticated(false);
         setRoles([]);
         window.sessionStorage.removeItem('token_expiry_alerted');
+        setExpiresAt(null);
       }
     };
     checkToken();
@@ -64,7 +69,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, roles, setRoles, clearRoles, logout, extendSession }}>
+    <AuthContext.Provider value={{ isAuthenticated, roles, setRoles, clearRoles, logout, extendSession, expiresAt }}>
       {children}
     </AuthContext.Provider>
   );
