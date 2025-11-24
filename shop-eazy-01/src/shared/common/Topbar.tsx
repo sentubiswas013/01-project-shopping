@@ -5,7 +5,7 @@
  Delete this file and get started with your project!
  * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  */
-import React, { useState } from 'react'; 
+import React, { useState, useEffect } from 'react'; 
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -14,21 +14,43 @@ export function Topbar({ title }: { title: string }) {
     const navigate = useNavigate();
     // Section: for account
     const [isOpenAccount, setIsOpenAccount] = useState(false);            
-    const toggleCollapseAccount = () => setIsOpenAccount(!isOpenAccount);
+    const toggleCollapseAccount = () => {
+        setIsOpenAccount(!isOpenAccount);
+        setIsOpenCurrency(false);
+        setIsOpenLanguage(false);
+    };
   
     // Section: for currency
     const [isOpenCurrency, setIsOpenCurrency] = useState(false);            
-    const toggleCollapseCurrency = () => setIsOpenCurrency(!isOpenCurrency);
+    const toggleCollapseCurrency = () => {
+        setIsOpenCurrency(!isOpenCurrency);
+        setIsOpenAccount(false);
+        setIsOpenLanguage(false);
+    };
   
     // Section: for language
     const [isOpenLanguage, setIsOpenLanguage] = useState(false);            
-    const toggleCollapseLanguage = () => setIsOpenLanguage(!isOpenLanguage);
+    const toggleCollapseLanguage = () => {
+        setIsOpenLanguage(!isOpenLanguage);
+        setIsOpenAccount(false);
+        setIsOpenCurrency(false);
+    };
 
     const handleLogout = () => {
         localStorage.removeItem('token');
         localStorage.removeItem('token_expires_at')
         navigate('/');
     };
+
+    useEffect(() => {
+        const handleClickOutside = () => {
+            setIsOpenAccount(false);
+            setIsOpenCurrency(false);
+            setIsOpenLanguage(false);
+        };
+        document.addEventListener('click', handleClickOutside);
+        return () => document.removeEventListener('click', handleClickOutside);
+    }, []);
 
   return (
     <>
@@ -47,22 +69,11 @@ export function Topbar({ title }: { title: string }) {
             </div>
             <div className="col-lg-6 text-end text-lg-right">
                 <div className="d-inline-flex align-items-center">
-                    <div className="btn-group">
-                        <button type="button" className="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown" onClick={toggleCollapseAccount}>My Account</button>
-                        {
-                          isOpenAccount && (
-                            <div className="dropdown-menu dropdown-menu-show dropdown-menu-right">
-                                <button className="dropdown-item" type="button">Sign in</button>
-                                <button className="dropdown-item" type="button">Sign up</button>
-                            </div>
-                          )  
-                        }                        
-                    </div>
-                    <div className="btn-group mx-2">
-                        <button type="button" className="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown" onClick={toggleCollapseCurrency}>USD</button>
+                    <div className="btn-group mx-2 position-relative" onClick={(e) => e.stopPropagation()}>
+                        <button type="button" className="btn btn-sm btn-light dropdown-toggle" onClick={toggleCollapseCurrency}>USD</button>
                         {
                             isOpenCurrency && (
-                                <div className="dropdown-menu dropdown-menu-show dropdown-menu-right">
+                                <div className="dropdown-menu show position-absolute" style={{right: 0, top: '100%'}}>
                                     <button className="dropdown-item" type="button">EUR</button>
                                     <button className="dropdown-item" type="button">GBP</button>
                                     <button className="dropdown-item" type="button">CAD</button>
@@ -70,11 +81,11 @@ export function Topbar({ title }: { title: string }) {
                             )                        
                         }                        
                     </div>
-                    <div className="btn-group">
-                        <button type="button" className="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown" onClick={toggleCollapseLanguage}>EN</button>
+                    <div className="btn-group position-relative" onClick={(e) => e.stopPropagation()}>
+                        <button type="button" className="btn btn-sm btn-light dropdown-toggle" onClick={toggleCollapseLanguage}>EN</button>
                         {
                             isOpenLanguage && (
-                                <div className="dropdown-menu dropdown-menu-show dropdown-menu-right">
+                                <div className="dropdown-menu show position-absolute" style={{right: 0, top: '100%'}}>
                                     <button className="dropdown-item" type="button">FR</button>
                                     <button className="dropdown-item" type="button">AR</button>
                                     <button className="dropdown-item" type="button">RU</button>
@@ -82,9 +93,20 @@ export function Topbar({ title }: { title: string }) {
                             )
                         }
                     </div>
-                    <div className="btn-group">
-                        <button type="button" className="btn btn-sm btn-light" onClick={handleLogout}>Logout</button>
+                    <div className="btn-group position-relative" onClick={(e) => e.stopPropagation()}>
+                        <button type="button" className="btn btn-sm btn-light dropdown-toggle" onClick={toggleCollapseAccount}>My Account</button>
+                        {
+                          isOpenAccount && (
+                            <div className="dropdown-menu show position-absolute" style={{right: 0, top: '100%'}}>
+                                <button className="dropdown-item" type="button" onClick={handleLogout}>Logout</button>
+                                <button className="dropdown-item" type="button">My Account</button>
+                            </div>
+                          )  
+                        }                        
                     </div>
+                    {/* <div className="btn-group">
+                        <button type="button" className="btn btn-sm btn-light" onClick={handleLogout}>Logout</button>
+                    </div> */}
                 </div>
                 <div className="d-inline-flex align-items-center d-block d-lg-none">
                     <a href="" className="btn px-0 ms-2">

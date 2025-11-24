@@ -79,28 +79,28 @@ export function BillingAddress({ title }: { title: string }) {
         <h5 className="section-title position-relative text-uppercase mb-3"><span className="bg-secondary pe-3">Shipping Address</span></h5>
         <div className="bg-light p-4">
             <div className="row">
-                <div className="col-md-6 form-group">
-                    <label>First Name</label>
+                <div className="col-md-6 mb-3">
+                    <label className="form-label">First Name</label>
                     <input className="form-control" type="text" placeholder="John"/>
                 </div>
-                <div className="col-md-6 form-group">
-                    <label>Last Name</label>
+                <div className="col-md-6 mb-3">
+                    <label className="form-label">Last Name</label>
                     <input className="form-control" type="text" placeholder="Doe"/>
                 </div>
-                <div className="col-md-6 form-group">
-                    <label>E-mail</label>
+                <div className="col-md-6 mb-3">
+                    <label className="form-label">E-mail</label>
                     <input className="form-control" type="text" placeholder="example@email.com"/>
                 </div>
-                <div className="col-md-6 form-group">
-                    <label>Mobile No</label>
+                <div className="col-md-6 mb-3">
+                    <label className="form-label">Mobile No</label>
                     <input className="form-control" type="text" placeholder="+123 456 789"/>
                 </div>
-                <div className="col-md-6 form-group">
-                    <label>Address Line 1</label>
+                <div className="col-md-6 mb-3">
+                    <label className="form-label">Address Line 1</label>
                     <input className="form-control" type="text" placeholder="123 Street"/>
                 </div>
-                <div className="col-md-6 form-group">
-                    <label>Address Line 2</label>
+                <div className="col-md-6 mb-3">
+                    <label className="form-label">Address Line 2</label>
                     <input className="form-control" type="text" placeholder="123 Street"/>
                 </div>
                 <div className="col-md-6 mb-3">
@@ -112,16 +112,16 @@ export function BillingAddress({ title }: { title: string }) {
                         <option>Algeria</option>
                     </select>
                 </div>
-                <div className="col-md-6 form-group">
-                    <label>City</label>
+                <div className="col-md-6 mb-3">
+                    <label className="form-label">City</label>
                     <input className="form-control" type="text" placeholder="New York"/>
                 </div>
-                <div className="col-md-6 form-group">
-                    <label>State</label>
+                <div className="col-md-6 mb-3">
+                    <label className="form-label">State</label>
                     <input className="form-control" type="text" placeholder="New York"/>
                 </div>
-                <div className="col-md-6 form-group">
-                    <label>ZIP Code</label>
+                <div className="col-md-6 mb-3">
+                    <label className="form-label">ZIP Code</label>
                     <input className="form-control" type="text" placeholder="123"/>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThLarge, faBars } from '@fortawesome/free-solid-svg-icons';
 
@@ -15,6 +15,8 @@ const [loading, setLoading] = useState(true);
 const [isOpenSort, setIsOpenSort] = useState(false);            
 // Section: for showing
 const [isOpenLimit, setIsOpenLimit] = useState(false);
+const sortRef = useRef<HTMLDivElement>(null);
+const limitRef = useRef<HTMLDivElement>(null);
 
 useEffect(() => {
 const fetchProducts = async () => {
@@ -32,8 +34,28 @@ const fetchProducts = async () => {
 fetchProducts();
 }, []);
 
-const toggleCollapseSort = () => setIsOpenSort(!isOpenSort);
-const toggleCollapseLimit = () => setIsOpenLimit(!isOpenLimit);
+useEffect(() => {
+  const handleClickOutside = (event: MouseEvent) => {
+    if (sortRef.current && !sortRef.current.contains(event.target as Node)) {
+      setIsOpenSort(false);
+    }
+    if (limitRef.current && !limitRef.current.contains(event.target as Node)) {
+      setIsOpenLimit(false);
+    }
+  };
+
+  document.addEventListener('mousedown', handleClickOutside);
+  return () => document.removeEventListener('mousedown', handleClickOutside);
+}, []);
+
+const toggleCollapseSort = () => {
+  setIsOpenSort(!isOpenSort);
+  setIsOpenLimit(false);
+};
+const toggleCollapseLimit = () => {
+  setIsOpenLimit(!isOpenLimit);
+  setIsOpenSort(false);
+};
 
 if (loading) return <div>Loading...</div>;
 
@@ -53,21 +75,21 @@ if (loading) return <div>Loading...</div>;
                         </button>
                     </div>
                     <div className="ml-2">
-                        <div className="btn-group">
-                            <button type="button" className="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown" onClick={toggleCollapseSort}
+                        <div className="btn-group" ref={sortRef} style={{position: 'relative'}}>
+                            <button type="button" className="btn btn-sm btn-light dropdown-toggle" onClick={toggleCollapseSort}
                             >Sorting</button>
                             {isOpenSort && (
-                            <div className="dropdown-menu dropdown-menu-show dropdown-menu-right">
+                            <div className="dropdown-menu show" style={{position: 'absolute', top: '100%', right: 0, display: 'block'}}>
                                 <a className="dropdown-item" href="#">Latest</a>
                                 <a className="dropdown-item" href="#">Popularity</a>
                                 <a className="dropdown-item" href="#">Best Rating</a>
                             </div>
                             )}
                         </div>
-                        <div className="btn-group ml-2">
-                            <button type="button" className="btn btn-sm btn-light dropdown-toggle" onClick={toggleCollapseLimit} data-toggle="dropdown">Showing</button>
+                        <div className="btn-group ml-2" ref={limitRef} style={{position: 'relative'}}>
+                            <button type="button" className="btn btn-sm btn-light dropdown-toggle" onClick={toggleCollapseLimit}>Showing</button>
                             {isOpenLimit && (
-                            <div className="dropdown-menu dropdown-menu-show dropdown-menu-right">
+                            <div className="dropdown-menu show" style={{position: 'absolute', top: '100%', right: 0, display: 'block'}}>
                                 <a className="dropdown-item" href="#">10</a>
                                 <a className="dropdown-item" href="#">20</a>
                                 <a className="dropdown-item" href="#">30</a>
