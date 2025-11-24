@@ -1,7 +1,8 @@
 // Product.tsx
 import { useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart, faHeart, faSyncAlt, faSearch, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faStar as faStarEmpty } from '@fortawesome/free-regular-svg-icons';
+import { faShoppingCart, faHeart, faSyncAlt, faSearch, faStar, faStarHalfAlt, faStarHalfStroke } from '@fortawesome/free-solid-svg-icons';
 import type { ProductProps } from '../../core/services/model';
 import { addToCart } from '../../core/redux/actions/cartActions';
 import { useNavigate } from 'react-router-dom';
