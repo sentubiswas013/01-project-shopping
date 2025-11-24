@@ -21,6 +21,8 @@ const [isOpenLimit, setIsOpenLimit] = useState(false);
 const [itemsPerPage, setItemsPerPage] = useState<number>(10);
 // Section: for pagination
 const [currentPage, setCurrentPage] = useState<number>(1);
+// Section: for view type
+const [viewType, setViewType] = useState<'grid' | 'list'>('grid');
 const sortRef = useRef<HTMLDivElement>(null);
 const limitRef = useRef<HTMLDivElement>(null);
 
@@ -108,10 +110,16 @@ if (loading) return (
             <div className="col-12 pb-1">
                 <div className="d-flex align-items-center justify-content-between mb-4">
                     <div>
-                        <button className="btn btn-sm btn-light">
+                        <button 
+                            className={`btn btn-sm ${viewType === 'grid' ? 'btn-primary' : 'btn-light'}`}
+                            onClick={() => setViewType('grid')}
+                        >
                             <FontAwesomeIcon icon={faThLarge} />
                         </button>
-                        <button className="btn btn-sm btn-light ml-2">
+                        <button 
+                            className={`btn btn-sm ${viewType === 'list' ? 'btn-primary' : 'btn-light'} ml-2`}
+                            onClick={() => setViewType('list')}
+                        >
                             <FontAwesomeIcon icon={faBars} />
                         </button>
                     </div>
@@ -144,7 +152,7 @@ if (loading) return (
             </div>
                   
             {currentProducts.map((product) => (
-            <div key={product.productId} className="col-lg-4 col-md-6 col-sm-6 pb-1">
+            <div key={product.productId} className={viewType === 'grid' ? 'col-lg-4 col-md-6 col-sm-6 pb-1' : 'col-12 pb-1'}>
                 <Product data={product}/>
             </div>
             ))} 
