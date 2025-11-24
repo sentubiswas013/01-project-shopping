@@ -18,6 +18,9 @@ const [sortType, setSortType] = useState<string>('latest');
 const [isOpenSort, setIsOpenSort] = useState(false);            
 // Section: for showing
 const [isOpenLimit, setIsOpenLimit] = useState(false);
+const [itemsPerPage, setItemsPerPage] = useState<number>(10);
+// Section: for pagination
+const [currentPage, setCurrentPage] = useState<number>(1);
 const sortRef = useRef<HTMLDivElement>(null);
 const limitRef = useRef<HTMLDivElement>(null);
 
@@ -74,6 +77,21 @@ const toggleCollapseLimit = () => {
   setIsOpenSort(false);
 };
 
+const handleItemsPerPageChange = (limit: number) => {
+  setItemsPerPage(limit);
+  setCurrentPage(1);
+  setIsOpenLimit(false);
+};
+
+const totalPages = Math.ceil(sortedProducts.length / itemsPerPage);
+const startIndex = (currentPage - 1) * itemsPerPage;
+const endIndex = startIndex + itemsPerPage;
+const currentProducts = sortedProducts.slice(startIndex, endIndex);
+
+const handlePageChange = (page: number) => {
+  setCurrentPage(page);
+};
+
 if (loading) return (
     <div className="col-lg-9 col-md-8">
       <div className="d-flex justify-content-center align-items-center" style={{height: '400px'}}>
@@ -115,9 +133,9 @@ if (loading) return (
                             <button type="button" className="btn btn-sm btn-light dropdown-toggle" onClick={toggleCollapseLimit}>Showing</button>
                             {isOpenLimit && (
                             <div className="dropdown-menu show" style={{position: 'absolute', top: '100%', right: 0, display: 'block'}}>
-                                <a className="dropdown-item" href="#">10</a>
-                                <a className="dropdown-item" href="#">20</a>
-                                <a className="dropdown-item" href="#">30</a>
+                                <button className="dropdown-item" onClick={() => handleItemsPerPageChange(10)}>10</button>
+                                <button className="dropdown-item" onClick={() => handleItemsPerPageChange(20)}>20</button>
+                                <button className="dropdown-item" onClick={() => handleItemsPerPageChange(30)}>30</button>
                             </div>
                             )}
                         </div>
@@ -125,23 +143,31 @@ if (loading) return (
                 </div>
             </div>
                   
-            {sortedProducts.map((product) => (
+            {currentProducts.map((product) => (
             <div key={product.productId} className="col-lg-4 col-md-6 col-sm-6 pb-1">
                 <Product data={product}/>
             </div>
             ))} 
             
+            {totalPages > 1 && (
             <div className="col-12">
                 <nav>
                     <ul className="pagination justify-content-center">
-                    <li className="page-item disabled"><a className="page-link" href="#">Previous</a></li>
-                    <li className="page-item active"><a className="page-link" href="#">1</a></li>
-                    <li className="page-item"><a className="page-link" href="#">2</a></li>
-                    <li className="page-item"><a className="page-link" href="#">3</a></li>
-                    <li className="page-item"><a className="page-link" href="#">Next</a></li>
+                        <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
+                            <button className="page-link" onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>Previous</button>
+                        </li>
+                        {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                            <li key={page} className={`page-item ${currentPage === page ? 'active' : ''}`}>
+                                <button className="page-link" onClick={() => handlePageChange(page)}>{page}</button>
+                            </li>
+                        ))}
+                        <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
+                            <button className="page-link" onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>Next</button>
+                        </li>
                     </ul>
                 </nav>
             </div>
+            )}
         </div>
     </div>
     {/*-- Shop Product End --*/}
