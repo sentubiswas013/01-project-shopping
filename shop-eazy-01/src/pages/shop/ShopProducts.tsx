@@ -2,15 +2,18 @@ import React, { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThLarge, faBars } from '@fortawesome/free-solid-svg-icons';
 
-// import products from '../../core/config/products';
 import Product from '../../shared/components/Product';
-import { productService } from '../../core/services/productService';
 import type { ProductProps } from '../../core/services/model';
 
-export function ShopProducts({ title }: { title: string }) {
+interface ShopProductsProps {
+  title: string;
+  products: ProductProps[];
+  loading: boolean;
+}
 
-const [products, setProducts] = useState<ProductProps[]>([]);
-const [loading, setLoading] = useState(true);
+export function ShopProducts({ title, products, loading }: ShopProductsProps) {
+const [sortedProducts, setSortedProducts] = useState<ProductProps[]>(products);
+const [sortType, setSortType] = useState<string>('latest');
 // Section: for sorting
 const [isOpenSort, setIsOpenSort] = useState(false);            
 // Section: for showing
@@ -19,20 +22,34 @@ const sortRef = useRef<HTMLDivElement>(null);
 const limitRef = useRef<HTMLDivElement>(null);
 
 useEffect(() => {
-const fetchProducts = async () => {
-    try {
-    const data = await productService.getProducts("12321");
-    console.log('Fetched products data:', data);
-    setProducts(data);
-    setLoading(false);
-    } catch (error) {
-    setLoading(false);
-    console.error('Error fetching products:', error);
-    }
-};
+  setSortedProducts(products);
+}, [products]);
 
-fetchProducts();
-}, []);
+const handleSort = (type: string) => {
+  setSortType(type);
+  let sorted = [...products];
+  
+  switch(type) {
+    case 'latest':
+      sorted.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+      break;
+    case 'popularity':
+      sorted.sort((a, b) => b.reviews - a.reviews);
+      break;
+    case 'rating':
+      sorted.sort((a, b) => b.ratingAvg - a.ratingAvg);
+      break;
+    case 'price-low':
+      sorted.sort((a, b) => a.price - b.price);
+      break;
+    case 'price-high':
+      sorted.sort((a, b) => b.price - a.price);
+      break;
+  }
+  
+  setSortedProducts(sorted);
+  setIsOpenSort(false);
+};
 
 useEffect(() => {
   const handleClickOutside = (event: MouseEvent) => {
@@ -57,7 +74,13 @@ const toggleCollapseLimit = () => {
   setIsOpenSort(false);
 };
 
-if (loading) return <div>Loading...</div>;
+if (loading) return (
+    <div className="col-lg-9 col-md-8">
+      <div className="d-flex justify-content-center align-items-center" style={{height: '400px'}}>
+        <div>Loading...</div>
+      </div>
+    </div>
+  );
 
   return (
     <>
@@ -80,9 +103,11 @@ if (loading) return <div>Loading...</div>;
                             >Sorting</button>
                             {isOpenSort && (
                             <div className="dropdown-menu show" style={{position: 'absolute', top: '100%', right: 0, display: 'block'}}>
-                                <a className="dropdown-item" href="#">Latest</a>
-                                <a className="dropdown-item" href="#">Popularity</a>
-                                <a className="dropdown-item" href="#">Best Rating</a>
+                                <button className="dropdown-item" onClick={() => handleSort('latest')}>Latest</button>
+                                <button className="dropdown-item" onClick={() => handleSort('popularity')}>Popularity</button>
+                                <button className="dropdown-item" onClick={() => handleSort('rating')}>Best Rating</button>
+                                <button className="dropdown-item" onClick={() => handleSort('price-low')}>Price: Low to High</button>
+                                <button className="dropdown-item" onClick={() => handleSort('price-high')}>Price: High to Low</button>
                             </div>
                             )}
                         </div>
@@ -100,7 +125,7 @@ if (loading) return <div>Loading...</div>;
                 </div>
             </div>
                   
-            {products.map((product) => (
+            {sortedProducts.map((product) => (
             <div key={product.productId} className="col-lg-4 col-md-6 col-sm-6 pb-1">
                 <Product data={product}/>
             </div>
