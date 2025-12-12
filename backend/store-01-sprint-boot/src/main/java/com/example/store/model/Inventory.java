@@ -1,45 +1,62 @@
 package com.example.store.model;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "inventory")
-public class Inventory {
+@Table(name = "Inventory") 
+public class Inventory {       
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long inventoryId;
-
+    @Column(name = "inventory_id")
+    private Integer inventoryId;
+    
+    @Column(name = "product_id")
+    private Integer productId;
+    
+    @Column(name = "stock_quantity")
+    private Integer stockQuantity;
+    
     @ManyToOne
-    @JoinColumn(name = "product_id", nullable = false)
+    @JoinColumn(name = "product_id", insertable = false, updatable = false)
     private Product product;
-
-    @ManyToOne
-    @JoinColumn(name = "warehouse_id", nullable = false)
-    private Warehouse warehouse;
-
-    @Column(nullable = false)
-    private Integer quantityAvailable;
-
-    @Column
-    private Integer reorderLevel = 0;
-
-    public Inventory() {}
-
-    public Inventory(Product product, Warehouse warehouse, Integer quantityAvailable, Integer reorderLevel) {
-        this.product = product;
-        this.warehouse = warehouse;
-        this.quantityAvailable = quantityAvailable;
-        this.reorderLevel = reorderLevel;
+    
+    public Inventory() {
     }
-
-    public Long getInventoryId() { return inventoryId; }
-    public void setInventoryId(Long inventoryId) { this.inventoryId = inventoryId; }
-    public Product getProduct() { return product; }
-    public void setProduct(Product product) { this.product = product; }
-    public Warehouse getWarehouse() { return warehouse; }
-    public void setWarehouse(Warehouse warehouse) { this.warehouse = warehouse; }
-    public Integer getQuantityAvailable() { return quantityAvailable; }
-    public void setQuantityAvailable(Integer quantityAvailable) { this.quantityAvailable = quantityAvailable; }
-    public Integer getReorderLevel() { return reorderLevel; }
-    public void setReorderLevel(Integer reorderLevel) { this.reorderLevel = reorderLevel; }
+    
+    public Inventory(Integer inventoryId, Integer productId, Integer stockQuantity) {
+        this.inventoryId = inventoryId;
+        this.productId = productId;
+        this.stockQuantity = stockQuantity;
+    }
+    
+    public Integer getInventoryId() {
+        return inventoryId;
+    }
+    
+    public void setInventoryId(Integer inventoryId) {
+        this.inventoryId = inventoryId;
+    }
+    
+    public Integer getProductId() {
+        return productId;
+    }
+    
+    public void setProductId(Integer productId) {
+        this.productId = productId;
+    }
+    
+    public Integer getStockQuantity() {
+        return stockQuantity;
+    }
+    
+    public void setStockQuantity(Integer stockQuantity) {
+        this.stockQuantity = stockQuantity;
+    }
+    
+    public Product getProduct() {
+        return product;
+    }
+    
+    public void setProduct(Product product) {
+        this.product = product;
+    }
 }

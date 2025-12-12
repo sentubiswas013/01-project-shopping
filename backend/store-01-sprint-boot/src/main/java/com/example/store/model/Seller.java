@@ -1,49 +1,109 @@
 package com.example.store.model;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "sellers")
 public class Seller {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long sellerId;
+    private Integer sellerId;
 
     @Column(nullable = false)
-    private Long userId;
+    private String name;
+
+    @Column(nullable = false, unique = true)
+    private String email;
+
+    @Column
+    private String phone;
+
+    @OneToMany(mappedBy = "seller", cascade = CascadeType.ALL)
+    private Set<Product> products = new HashSet<>();
 
     @Column(nullable = false)
-    private String storeName;
-
-    @Column(length = 50)
-    private String gstNumber;
-
-    @Column(precision = 3, scale = 2)
-    private Double ratingAvg = 0.0;
+    private LocalDateTime createdAt;
 
     @Column(nullable = false)
-    private Boolean verified = false;
+    private LocalDateTime updatedAt;
 
-    public Seller() {}
-
-    public Seller(Long userId, String storeName, String gstNumber, Double ratingAvg, Boolean verified) {
-        this.userId = userId;
-        this.storeName = storeName;
-        this.gstNumber = gstNumber;
-        this.ratingAvg = ratingAvg;
-        this.verified = verified;
+    public Seller() {
     }
 
-    public Long getSellerId() { return sellerId; }
-    public void setSellerId(Long sellerId) { this.sellerId = sellerId; }
-    public Long getUserId() { return userId; }
-    public void setUserId(Long userId) { this.userId = userId; }
-    public String getStoreName() { return storeName; }
-    public void setStoreName(String storeName) { this.storeName = storeName; }
-    public String getGstNumber() { return gstNumber; }
-    public void setGstNumber(String gstNumber) { this.gstNumber = gstNumber; }
-    public Double getRatingAvg() { return ratingAvg; }
-    public void setRatingAvg(Double ratingAvg) { this.ratingAvg = ratingAvg; }
-    public Boolean getVerified() { return verified; }
-    public void setVerified(Boolean verified) { this.verified = verified; }
+    public Seller(String name, String email, String phone) {
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.products = new HashSet<>();
+    }
+
+    public Integer getSellerId() {
+        return sellerId;
+    }
+
+    public void setSellerId(Integer sellerId) {
+        this.sellerId = sellerId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public Set<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Set<Product> products) {
+        this.products = products;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    @PrePersist
+    protected void onCreate() {
+        createdAt = LocalDateTime.now();
+        updatedAt = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        updatedAt = LocalDateTime.now();
+    }
 }
