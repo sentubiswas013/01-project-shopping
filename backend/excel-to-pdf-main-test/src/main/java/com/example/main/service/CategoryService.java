@@ -1,0 +1,26 @@
+package com.example.main.service;
+
+import com.example.main.model.Category;
+import com.example.main.repository.CategoryRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class CategoryService {
+	private final CategoryRepository categoryRepository;
+
+	public CategoryService(CategoryRepository categoryRepository) {
+		this.categoryRepository = categoryRepository;
+	}
+
+	public List<Category> getAll() {
+		return categoryRepository.findAll();
+	}
+
+	public Category create(Category category) {
+		return categoryRepository.save(category);
+	}
+}

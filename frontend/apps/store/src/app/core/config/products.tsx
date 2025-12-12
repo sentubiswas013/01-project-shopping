@@ -1,11 +1,33 @@
-import product1 from '../../../assets/img/product-1.jpg';
-import product2 from '../../../assets/img/product-2.jpg';
-import product3 from '../../../assets/img/product-3.jpg';
-import product4 from '../../../assets/img/product-4.jpg';
-import product5 from '../../../assets/img/product-5.jpg';
-import product6 from '../../../assets/img/product-6.jpg';
-import product7 from '../../../assets/img/product-7.jpg';
-import product8 from '../../../assets/img/product-8.jpg';
+import product1 from '../../../assets/img/products/product-1.jpg';
+import product2 from '../../../assets/img/products/product-2.jpg';
+import product3 from '../../../assets/img/products/product-3.jpg';
+import product4 from '../../../assets/img/products/product-4.jpg';
+import product5 from '../../../assets/img/products/product-5.jpg';
+import product6 from '../../../assets/img/products/product-6.jpg';
+import product7 from '../../../assets/img/products/product-7.jpg';
+import product8 from '../../../assets/img/products/product-8.jpg';
+import product9 from '../../../assets/img/products/product-9.jpg';
+import product10 from '../../../assets/img/products/product-10.jpg';
+import product11 from '../../../assets/img/products/product-11.jpg';
+import product12 from '../../../assets/img/products/product-12.jpg';
+import product13 from '../../../assets/img/products/product-13.jpg';
+import product14 from '../../../assets/img/products/product-14.jpg';
+import product15 from '../../../assets/img/products/product-15.jpg';
+import product16 from '../../../assets/img/products/product-16.jpg';
+import product17 from '../../../assets/img/products/product-17.jpg';
+import product18 from '../../../assets/img/products/product-18.jpg';
+import product19 from '../../../assets/img/products/product-19.jpg';
+import product20 from '../../../assets/img/products/product-20.jpg';
+import product21 from '../../../assets/img/products/product-21.jpg';
+import product22 from '../../../assets/img/products/product-22.jpg';
+import product23 from '../../../assets/img/products/product-23.jpg';
+import product24 from '../../../assets/img/products/product-24.jpg';
+import product25 from '../../../assets/img/products/product-25.jpg';
+import product26 from '../../../assets/img/products/product-26.jpg';
+import product27 from '../../../assets/img/products/product-27.jpg';
+// import product28 from '../../../assets/img/products/product-28.jpg';
+// import product29 from '../../../assets/img/products/product-29.jpg';
+// import product30 from '../../../assets/img/products/product-30.jpg';
 
 
 const products = [
@@ -17,6 +39,9 @@ const products = [
     rating: 5,
     image: product1,
     reviews: 99,
+    sale: '',
+    status: '',
+    stock: 'Out of Stock',
   },
   {
     id: 2,
@@ -26,6 +51,9 @@ const products = [
     rating: 4,
     image: product2,
     reviews: 76,
+    sale: '',
+    status: 'New',
+    stock: '',
   },
   {
     id: 3,
@@ -35,6 +63,9 @@ const products = [
     rating: 4,
     image: product3,
     reviews: 65,
+    sale: 'Sale',
+    status: '',
+    stock: '',
   },
   {
     id: 4,
@@ -44,6 +75,9 @@ const products = [
     rating: 5,
     image: product4,
     reviews: 88,
+    sale: '',
+    status: '',
+    stock: '',
   },
   {
     id: 5,
@@ -53,6 +87,9 @@ const products = [
     rating: 3,
     image: product5,
     reviews: 43,
+    sale: '',
+    status: '',
+    stock: 'Out of Stock',
   },
   {
     id: 6,
@@ -62,6 +99,9 @@ const products = [
     rating: 4,
     image: product6,
     reviews: 112,
+    sale: '',
+    status: 'New',
+    stock: '',
   },
   {
     id: 7,
@@ -71,6 +111,9 @@ const products = [
     rating: 4,
     image: product7,
     reviews: 34,
+    sale: '',
+    status: '',
+    stock: '',
   },
   {
     id: 8,
@@ -80,7 +123,275 @@ const products = [
     rating: 4,
     image: product8,
     reviews: 77,
+    sale: 'Sale',
+    status: '',
+    stock: '',
   },
+  {
+    id: 9,
+    name: "Wireless Earbuds",
+    price: 79,
+    oldPrice: 95,
+    rating: 4,
+    image: product9,
+    reviews: 58,
+    sale: '',
+    status: '',
+    stock: '',
+  },
+  {
+    id: 10,
+    name: "Denim Jeans",
+    price: 110,
+    oldPrice: 130,
+    rating: 5,
+    image: product10,
+    reviews: 91,
+    sale: 'Sale',
+    status: '',
+    stock: '',
+  },
+  {
+    id: 11,
+    name: "Formal Shirt",
+    price: 120,
+    oldPrice: 145,
+    rating: 3,
+    image: product11,
+    reviews: 48,
+    sale: '',
+    status: '',
+    stock: '',
+  },
+  {
+    id: 12,
+    name: "Sneaker Socks",
+    price: 15,
+    oldPrice: 20,
+    rating: 4,
+    image: product12,
+    reviews: 29,
+    sale: '',
+    status: '',
+    stock: 'Out of Stock',
+  },
+  {
+    id: 13,
+    name: "Leather Belt",
+    price: 35,
+    oldPrice: 45,
+    rating: 5,
+    image: product13,
+    reviews: 39,
+    sale: '',
+    status: 'New',
+    stock: '',
+  },
+  {
+    id: 14,
+    name: "Hoodie",
+    price: 140,
+    oldPrice: 160,
+    rating: 4,
+    image: product14,
+    reviews: 51,
+    sale: '',
+    status: '',
+    stock: '',
+  },
+  {
+    id: 15,
+    name: "Graphic T-Shirt",
+    price: 75,
+    oldPrice: 85,
+    rating: 4,
+    image: product15,
+    reviews: 33,
+    sale: '',
+    status: '',
+    stock: '',
+  },
+  {
+    id: 16,
+    name: "Digital Camera",
+    price: 500,
+    oldPrice: 550,
+    rating: 5,
+    image: product16,
+    reviews: 102,
+    sale: 'Sale',
+    status: '',
+    stock: '',
+  },
+  {
+    id: 17,
+    name: "Bluetooth Speaker",
+    price: 89,
+    oldPrice: 105,
+    rating: 4,
+    image: product17,
+    reviews: 67,
+    sale: '',
+    status: '',
+    stock: '',
+  },
+  {
+    id: 18,
+    name: "Winter Coat",
+    price: 220,
+    oldPrice: 270,
+    rating: 5,
+    image: product18,
+    reviews: 83,
+    sale: '',
+    status: 'New',
+    stock: '',
+  },
+  {
+    id: 19,
+    name: "Sports Watch",
+    price: 160,
+    oldPrice: 190,
+    rating: 3,
+    image: product19,
+    reviews: 37,
+    sale: '',
+    status: '',
+    stock: 'Out of Stock',
+  },
+  {
+    id: 20,
+    name: "Slim Fit Pants",
+    price: 99,
+    oldPrice: 120,
+    rating: 4,
+    image: product20,
+    reviews: 60,
+    sale: 'Sale',
+    status: '',
+    stock: '',
+  },
+  {
+    id: 21,
+    name: "Fitness Tracker",
+    price: 130,
+    oldPrice: 150,
+    rating: 4,
+    image: product21,
+    reviews: 75,
+    sale: '',
+    status: 'New',
+    stock: '',
+  },
+  {
+    id: 22,
+    name: "Travel Luggage",
+    price: 280,
+    oldPrice: 320,
+    rating: 5,
+    image: product22,
+    reviews: 44,
+    sale: '',
+    status: '',
+    stock: '',
+  },
+  {
+    id: 23,
+    name: "Cotton Shorts",
+    price: 55,
+    oldPrice: 70,
+    rating: 3,
+    image: product23,
+    reviews: 22,
+    sale: '',
+    status: '',
+    stock: '',
+  },
+  {
+    id: 24,
+    name: "Office Blazer",
+    price: 185,
+    oldPrice: 210,
+    rating: 4,
+    image: product24,
+    reviews: 41,
+    sale: '',
+    status: '',
+    stock: '',
+  },
+  {
+    id: 25,
+    name: "Beach Hat",
+    price: 39,
+    oldPrice: 45,
+    rating: 4,
+    image: product25,
+    reviews: 27,
+    sale: '',
+    status: '',
+    stock: '',
+  },
+  {
+    id: 26,
+    name: "Yoga Mat",
+    price: 65,
+    oldPrice: 80,
+    rating: 5,
+    image: product26,
+    reviews: 58,
+    sale: '',
+    status: '',
+    stock: '',
+  },
+  {
+    id: 27,
+    name: "Gaming Mouse",
+    price: 49,
+    oldPrice: 60,
+    rating: 4,
+    image: product27,
+    reviews: 36,
+    sale: 'Sale',
+    status: '',
+    stock: '',
+  },
+  // {
+  //   id: 28,
+  //   name: "Laptop Bag",
+  //   price: 110,
+  //   oldPrice: 130,
+  //   rating: 5,
+  //   image: product28,
+  //   reviews: 72,
+  //   sale: '',
+  //   status: '',
+  //   stock: '',
+  // },
+  // {
+  //   id: 29,
+  //   name: "Trendy Kurta",
+  //   price: 99,
+  //   oldPrice: 115,
+  //   rating: 4,
+  //   image: product29,
+  //   reviews: 47,
+  //   sale: '',
+  //   status: 'New',
+  //   stock: '',
+  // },
+  // {
+  //   id: 30,
+  //   name: "Designer Handbag",
+  //   price: 320,
+  //   oldPrice: 370,
+  //   rating: 5,
+  //   image: product30,
+  //   reviews: 93,
+  //   sale: 'Sale',
+  //   status: '',
+  //   stock: '',
+  // },
 ];
+
 
 export default products;

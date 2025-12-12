@@ -6,6 +6,9 @@
 
 [Learn more about this workspace setup and its capabilities](https://nx.dev/nx-api/js?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
 
+##  Backend URL details:
+- http://localhost:8080/swagger-ui.html
+
 ## Generate a library
 
 ```sh
@@ -47,9 +50,10 @@ npx nx generate @nrwl/react:application admin --directory=apps
 
 ## Run the library Application
 ```sh
-npx nx run store:serve
-npx nx run library:serve
 npx nx run admin:serve
+npx nx run backend:serve
+npx nx run library:serve
+npx nx run store:serve
 ```
 
 ## Used Packages
@@ -69,6 +73,8 @@ npm install --save react-owl-carousel2 owl.carousel --legacy-peer-deps
 npm install --save jquery --legacy-peer-deps
 npm install --save  npm install swiper --legacy-peer-deps
 npm install --save  react-router-dom --legacy-peer-deps
+npm install --save npm install @fortawesome/free-brands-svg-icons --legacy-peer-deps
+
 
 npm install --save @fortawesome/fontawesome-svg-core \ @fortawesome/free-solid-svg-icons \ @fortawesome/free-regular-svg-icons \ @fortawesome/free-brands-svg-icons \ @fortawesome/react-fontawesome --legacy-peer-deps
 

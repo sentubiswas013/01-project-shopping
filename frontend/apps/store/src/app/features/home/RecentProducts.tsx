@@ -31,7 +31,7 @@ export function RecentProducts({ title }: { title: string }) {
         <h2 className="section-title position-relative text-uppercase mx-xl-5 mb-4"><span className="bg-secondary pr-3">Recent Products</span></h2>
         
         <div className="row px-xl-5">            
-            {products.map((product) => (
+            {products.slice(8, 16).map((product) => (
             <div key={product.id} className="col-lg-3 col-md-4 col-sm-6 pb-1">
                 <Product {...product} />
             </div>
